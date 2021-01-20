@@ -1,5 +1,5 @@
 
-# Fitting one cue or multiple cues
+# Mutual cue dependence
 To address whether we should be fitting one cue at a time (even though they were delivered in an intermixed order) we designed two "mixing models" and compared them to a similar model fitted for each cue separately.
 
 ### Models
