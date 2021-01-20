@@ -8,6 +8,6 @@ To address whether we should be fitting one cue at a time (even though they were
 #### Value mixer
 #### Independent fit (fitted separately for each cue)
 
-![model_prob_allcues](img/model_prob_allcues.png)
+![model_prob_allcues](contents/images/model_prob_allcues.png)
 
 ---
