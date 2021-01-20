@@ -46,6 +46,8 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -193,26 +195,26 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#independent-fit-fitted-all-3-at-once">
-     Independent fit (fitted all 3 at once)
+    <a class="reference internal nav-link" href="#independent-model-im">
+     Independent model (IM)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#updating-mixer">
-     Updating mixer
+    <a class="reference internal nav-link" href="#updating-mixer-um">
+     Updating mixer (UM)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#value-mixer">
-     Value mixer
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#independent-fit-fitted-separately-for-each-cue">
-     Independent fit (fitted separately for each cue)
+    <a class="reference internal nav-link" href="#value-mixer-vm">
+     Value mixer (VM)
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-comparison">
+   Model comparison
+  </a>
  </li>
 </ul>
 
@@ -230,20 +232,52 @@
 <p>To address whether we should be fitting one cue at a time (even though they were delivered in an intermixed order) we designed two “mixing models” and compared them to a similar model fitted for each cue separately.</p>
 <div class="section" id="models">
 <h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="independent-fit-fitted-all-3-at-once">
-<h3>Independent fit (fitted all 3 at once)<a class="headerlink" href="#independent-fit-fitted-all-3-at-once" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="independent-model-im">
+<h3>Independent model (IM)<a class="headerlink" href="#independent-model-im" title="Permalink to this headline">¶</a></h3>
+<p><strong>Definitions</strong> <br>
+<span class="math notranslate nohighlight">\(P \in [0,1]\)</span> … shock probability <br>
+<span class="math notranslate nohighlight">\(t \in [1,\infty)]\)</span> … trial <br>
+<span class="math notranslate nohighlight">\(c = \{1,2,3\}\)</span> … cue presented on this trial <br>
+<span class="math notranslate nohighlight">\(o = \{0,1\}\)</span> … ouctome (no-shock/shock)</p>
+<p>Probability is updated on each trial using the Rescrola-Wagner equation:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{c,t+1} = P_{c,t} + \alpha_{o,c}(O_t - P_{c,t})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha \in [0,1]\)</span> is the learning rate. In all models, the <span class="math notranslate nohighlight">\(\alpha\)</span> is separate for for shock and no-shock trials as well as for each cue (3), which makes the total number of parameters for this model equal to <strong>9</strong>.</p>
 </div>
-<div class="section" id="updating-mixer">
-<h3>Updating mixer<a class="headerlink" href="#updating-mixer" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="updating-mixer-um">
+<h3>Updating mixer (UM)<a class="headerlink" href="#updating-mixer-um" title="Permalink to this headline">¶</a></h3>
+<p>The UM model assumes that the probabilities for all cues are updated on each trial, irrespective of which cue was presented. This is achieve by estimating 3 learning rates <span class="math notranslate nohighlight">\(\alpha\)</span> for each cue type (3), for example for cue 1 the following three updated take place:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{c,u,t+1} = P_{c,u,t} + \alpha_{o,u,c}(O_t - P_{c,u,t})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(u\)</span> refers to the cue being <em>updated</em>, not presented. As before, all learning rates are estimated separately for shock and no-shock outcomes. This results in <strong>18</strong> free parameters in total.</p>
 </div>
-<div class="section" id="value-mixer">
-<h3>Value mixer<a class="headerlink" href="#value-mixer" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="value-mixer-vm">
+<h3>Value mixer (VM)<a class="headerlink" href="#value-mixer-vm" title="Permalink to this headline">¶</a></h3>
+<p>The VM model only updates the relevant (presented) cue, however, it does so by mixing the current probability estimates for all three cue which are combined together using estimated weights <span class="math notranslate nohighlight">\(w\)</span>.
+<span class="math notranslate nohighlight">\(k\)</span> here refers to the cue being mixed while <span class="math notranslate nohighlight">\(c\)</span> represents the current cue presented, <span class="math notranslate nohighlight">\(Q\)</span> is used to represent the combined probability.</p>
+<p>We present an example of a trial when <code class="docutils literal notranslate"><span class="pre">cue</span> <span class="pre">1</span></code> was presented:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q_{t} = w_{(k=1|c)}P_{(k=1,t)} + w_{(k=2|c)}P_{(k=2,t)} + w_{(k=3|c)}P_{(k=3,t)} \\
+P_{(c=1,t+1)} = P_{(c=1,t)} + \alpha_{(o,c=1)}(O_t - Q_t)
+\end{split}\]</div>
+<p>This results in 9 weights and additional 6 <span class="math notranslate nohighlight">\(\alpha\)</span> learning rates, and therefore <strong>15</strong> parameters in total.</p>
 </div>
-<div class="section" id="independent-fit-fitted-separately-for-each-cue">
-<h3>Independent fit (fitted separately for each cue)<a class="headerlink" href="#independent-fit-fitted-separately-for-each-cue" title="Permalink to this headline">¶</a></h3>
-<p><img alt="model_prob_allcues" src="_images/model_prob_allcues.png" /></p>
+</div>
+<div class="section" id="model-comparison">
+<h2>Model comparison<a class="headerlink" href="#model-comparison" title="Permalink to this headline">¶</a></h2>
+<p>BIC scores were used to calculate model probability for each participant:</p>
+<div class="math notranslate nohighlight">
+\[
+w_{p,m} = \frac{ exp(-\frac{1}{2}dBIC_{p,m})}{ \sum_{j=1}^{m}exp(-\frac{1}{2}dBIC_{p,j})}
+\]</div>
+<p>The plot below whows individual weights as well as overall mean.
+<img alt="model_prob_allcues" src="_images/model_prob_allcues.png" /></p>
 <hr class="docutils" />
-</div>
 </div>
 </div>
 
