@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search &#8212; State inference and anxiety</title>
+    <title>Key Variable Checks &#8212; State inference and anxiety</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -36,7 +36,6 @@
     
   <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
 
-    
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
@@ -56,15 +55,13 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="_static/searchtools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" />
-  <script src="searchindex.js" defer></script>
-  
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Variable distributions" href="variable_distributions.html" />
+    <link rel="prev" title="Mutual cue dependence" href="mutual_cue_influence.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
 
 
 
@@ -84,7 +81,7 @@
   <h1 class="site-logo" id="site-title">State inference and anxiety</h1>
   
 </a>
-</div><form class="bd-search d-flex align-items-center" action="#" method="get">
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
@@ -101,7 +98,7 @@
   SUPPLEMENTARY MATERIALS
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="modelling.html">
    Modelling
@@ -121,8 +118,8 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="key_variable_checks.html">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="current reference internal" href="#">
    Key Variable Checks
   </a>
   <ul class="collapse-ul">
@@ -182,6 +179,23 @@
         </button>
         
         
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/key_variable_checks.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
         <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
@@ -193,7 +207,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ozika/anxiety_paper/issues/new?title=Issue%20on%20page%20%2Fsearch.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ozika/anxiety_paper/issues/new?title=Issue%20on%20page%20%2Fkey_variable_checks.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -221,27 +235,31 @@
         
               <div>
                 
-  <h1 id="search-documentation">Search</h1>
-  <div id="fallback" class="admonition warning">
-  <script>$('#fallback').hide();</script>
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  <p>
-    Searching for multiple words only shows matches that contain
-    all words.
-  </p>
-  <form action="" method="get">
-    <input type="text" name="q" aria-labelledby="search-documentation" value="" />
-    <input type="submit" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>
-  
-  <div id="search-results">
-  
-  </div>
+  <div class="section" id="key-variable-checks">
+<h1>Key Variable Checks<a class="headerlink" href="#key-variable-checks" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -251,6 +269,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="mutual_cue_influence.html" title="previous page">Mutual cue dependence</a>
+    <a class='right-next' id="next-link" href="variable_distributions.html" title="next page">Variable distributions</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

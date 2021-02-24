@@ -1,0 +1,1433 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variable distributions &#8212; State inference and anxiety</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="First reported value" href="first_prob.html" />
+    <link rel="prev" title="Key Variable Checks" href="key_variable_checks.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">State inference and anxiety</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="landing-page.html">
+   Main page
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  SUPPLEMENTARY MATERIALS
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="modelling.html">
+   Modelling
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="models.html">
+     Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mutual_cue_influence.html">
+     Mutual cue dependence
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="key_variable_checks.html">
+   Key Variable Checks
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Variable distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="first_prob.html">
+     First reported value
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="order_effect.html">
+     Order effect
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="starting_contingency.html">
+     Starting contingency analysis
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/variable_distributions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ozika/anxiety_paper"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ozika/anxiety_paper/issues/new?title=Issue%20on%20page%20%2Fvariable_distributions.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ozika/anxiety_paper/main?urlpath=tree/state_anxiety/variable_distributions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trait-anxiety">
+   Trait anxiety
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overall">
+     Overall
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-study">
+     By study
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shock-intensity">
+   Shock intensity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Overall
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-study-and-anxiety">
+     By study and anxiety
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-probability-data">
+     By probability data
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="variable-distributions">
+<h1>Variable distributions<a class="headerlink" href="#variable-distributions" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">addpath</span><span class="p">(</span><span class="s">&#39;/data/drive/DPhil/THESIS/Cross_study_analyses/learning-repo/scripts&#39;</span><span class="p">)</span>
+<span class="n">clear</span> <span class="s">all</span>
+<span class="c">% load all data sets!</span>
+<span class="n">comp</span><span class="p">=</span><span class="s">&#39;onx&#39;</span><span class="p">;</span><span class="n">ca</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">pX_analysis_init</span><span class="p">;</span>
+
+
+<span class="c">% filter the data</span>
+<span class="c">% specify what data to EXCLUDE (this should be a json structure, but</span>
+<span class="c">% matlab...</span>
+<span class="n">pX_subject_filter</span><span class="p">;</span>
+<span class="p">[</span><span class="n">dt_used</span><span class="p">]</span> <span class="p">=</span> <span class="n">pX_filter_data</span><span class="p">(</span><span class="n">sp</span><span class="p">,</span> <span class="s">&#39;pX&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c">%% all collected data without any exclusions for </span>
+<span class="n">sp</span> <span class="p">=</span> <span class="p">{</span> 
+        <span class="p">{{</span><span class="s">&#39;study&#39;</span><span class="p">,</span> <span class="s">&#39;visit&#39;</span><span class="p">},</span> <span class="p">{[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]}},</span>
+
+        <span class="p">};</span>
+<span class="p">[</span><span class="n">dt_coll</span><span class="p">]</span> <span class="p">=</span> <span class="n">pX_filter_data</span><span class="p">(</span><span class="n">sp</span><span class="p">,</span> <span class="s">&#39;pX&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">cs</span> <span class="p">=[</span><span class="mi">27</span> <span class="mi">153</span> <span class="mi">139</span><span class="p">;</span> <span class="n">45</span> <span class="s">48</span> <span class="s">71</span><span class="p">;</span> <span class="n">232</span> <span class="s">72</span> <span class="s">85</span><span class="p">;</span> <span class="n">26</span> <span class="s">200</span> <span class="s">237]./255</span><span class="p">;</span>
+<span class="n">err_var</span> <span class="p">=</span> <span class="s">&#39;err_true_p3&#39;</span><span class="p">;</span>
+<span class="n">cols</span> <span class="p">=</span><span class="n">pX_load_colors</span><span class="p">(</span><span class="s">&#39;acqext4&#39;</span><span class="p">,</span> <span class="s">&#39;pX&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    &#39;9.6.0.1099231 (R2019a) Update 1&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running with visit 1 from Losartan!
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw participants: 116
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Excluded for missing anxiety scores:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    &#39;ss11&#39;
+    &#39;ss31&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Participans after anx exlc.: 114
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Excluded for failure to distinguish harm from safe:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    &#39;f27&#39;
+    &#39;m01&#39;
+    &#39;m06&#39;
+    &#39;m29&#39;
+    &#39;m39&#39;
+    &#39;pl16&#39;
+    &#39;pl20&#39;
+    &#39;ss18&#39;
+    &#39;ss19&#39;
+    &#39;ss7&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Participans after dist exlc.: 104
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   pl9 ... excluding for misunderstanding the task
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ss8_bl7525 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ss4_bl6040 ... excluding for missing more than 50% of data
+   m01_v1 ... excluding for missing more than 50% of data
+   m13_v1 ... excluding for missing more than 50% of data
+   f39_v1 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   f38_v1 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Participans after all exlc.: 98
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="trait-anxiety">
+<h2>Trait anxiety<a class="headerlink" href="#trait-anxiety" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overall">
+<h3>Overall<a class="headerlink" href="#overall" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">=</span><span class="n">figure</span><span class="p">;</span>
+<span class="n">edges</span> <span class="p">=</span> <span class="mi">20</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span> 
+<span class="n">h</span><span class="p">=</span><span class="n">histogram</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">ta</span><span class="p">,</span> <span class="n">edges</span><span class="p">);</span> <span class="n">hold</span> <span class="s">on</span>
+<span class="n">h</span><span class="p">.</span><span class="n">FaceAlpha</span><span class="p">=</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="n">h</span><span class="p">.</span><span class="n">FaceColor</span><span class="p">=</span><span class="n">cs</span><span class="p">(</span><span class="mi">4</span><span class="p">,:);</span>
+<span class="n">h</span><span class="p">=</span><span class="n">histogram</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">ta</span><span class="p">,</span> <span class="n">edges</span><span class="p">);</span>  
+<span class="n">h</span><span class="p">.</span><span class="n">FaceAlpha</span><span class="p">=</span> <span class="mf">0.2</span><span class="p">;</span>
+<span class="n">h</span><span class="p">.</span><span class="n">FaceColor</span><span class="p">=</span><span class="n">cs</span><span class="p">(</span><span class="mi">4</span><span class="p">,:);</span>
+<span class="n">legend</span><span class="p">({</span> <span class="s">&#39;After exclusions&#39;</span><span class="p">,</span> <span class="s">&#39;Collected&#39;</span><span class="p">});</span>
+<span class="n">title</span><span class="p">({</span><span class="s">&#39;Trait anxiety distribution&#39;</span><span class="p">});</span>
+<span class="n">nanmedian</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">ta</span><span class="p">)</span>
+<span class="n">nanmedian</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">ta</span><span class="p">)</span>
+<span class="c">% Test the null hypothesis that data in vectors x1 and x2 comes from populations with the same distribution.</span>
+<span class="c">% The returned value of h = 1 indicates that kstest rejects the null hypothesis at the default 5% significance level.</span>
+<span class="c">% h=1 the distributions are different. </span>
+
+<span class="p">[</span><span class="n">H</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">KSSTAT</span><span class="p">]</span> <span class="p">=</span> <span class="n">kstest2</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">ta</span><span class="p">,</span><span class="n">dt_used</span><span class="p">.</span><span class="n">ta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+   38.5000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    39
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
+
+  logical
+
+   0
+
+
+P =
+
+    1.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KSSTAT =
+
+    0.0315
+</pre></div>
+</div>
+<img alt="_images/variable_distributions_3_4.png" src="_images/variable_distributions_3_4.png" />
+</div>
+</div>
+</div>
+<div class="section" id="by-study">
+<h3>By study<a class="headerlink" href="#by-study" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">=</span><span class="n">figure</span><span class="p">;</span>
+<span class="n">for</span> <span class="s">st</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span>
+    <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">st</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="p">=</span> <span class="mi">20</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span> 
+    <span class="n">h</span><span class="p">=</span><span class="n">histogram</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">ta</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">study</span><span class="o">==</span><span class="n">st</span><span class="p">),</span> <span class="n">edges</span><span class="p">);</span>  <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">h</span><span class="p">.</span><span class="n">FaceAlpha</span><span class="p">=</span> <span class="mf">0.5</span><span class="p">;</span>
+    <span class="n">h</span><span class="p">.</span><span class="n">FaceColor</span><span class="p">=</span><span class="n">cs</span><span class="p">(</span><span class="n">st</span><span class="p">,:);</span>
+    <span class="n">h</span><span class="p">=</span><span class="n">histogram</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">ta</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">study</span><span class="o">==</span><span class="n">st</span><span class="p">),</span> <span class="n">edges</span><span class="p">);</span> 
+    <span class="n">h</span><span class="p">.</span><span class="n">FaceAlpha</span><span class="p">=</span> <span class="mf">0.2</span><span class="p">;</span>
+    <span class="n">h</span><span class="p">.</span><span class="n">FaceColor</span><span class="p">=</span><span class="n">cs</span><span class="p">(</span><span class="n">st</span><span class="p">,:);</span>
+    
+    
+    <span class="n">legend</span><span class="p">({</span> <span class="s">&#39;After exclusions&#39;</span><span class="p">,</span> <span class="s">&#39;Collected&#39;</span><span class="p">},</span> <span class="s">&#39;location&#39;</span><span class="p">,</span> <span class="s">&#39;northoutside&#39;</span><span class="p">);</span>
+    <span class="n">title</span><span class="p">({[</span><span class="s">&#39;Study &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">st</span><span class="p">)]});</span>
+    <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Trait anxiety&#39;</span><span class="p">);</span>
+    <span class="nb">disp</span><span class="p">([</span><span class="s">&#39;Study &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">st</span><span class="p">)])</span>
+    <span class="p">[</span><span class="n">H</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">KSSTAT</span><span class="p">]</span> <span class="p">=</span> <span class="n">kstest2</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">ta</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">study</span><span class="o">==</span><span class="n">st</span><span class="p">),</span><span class="n">dt_used</span><span class="p">.</span><span class="n">ta</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">study</span><span class="o">==</span><span class="n">st</span><span class="p">))</span>
+<span class="k">end</span>
+<span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">=</span> <span class="mi">700</span><span class="p">;</span>
+<span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">4</span><span class="p">)=</span><span class="mi">250</span><span class="p">;</span>
+<span class="n">cf</span><span class="p">=</span> <span class="p">[];</span> 
+<span class="n">cf</span><span class="p">.</span><span class="n">bycat</span><span class="p">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">cf</span><span class="p">.</span><span class="nb">cat</span> <span class="p">={</span><span class="s">&#39;study_str&#39;</span><span class="p">};</span>
+<span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="p">=</span> <span class="n">pX_report_stats</span><span class="p">(</span> <span class="p">(</span><span class="n">dt_used</span><span class="p">),</span> <span class="s">&#39;ta&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;study_str&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;ids&#39;</span><span class="p">},</span> <span class="n">cf</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Study 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
+
+  logical
+
+   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P =
+
+    1.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KSSTAT =
+
+    0.0617
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Study 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
+
+  logical
+
+   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P =
+
+    0.9965
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KSSTAT =
+
+    0.0884
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Study 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
+
+  logical
+
+   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P =
+
+    0.9999
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KSSTAT =
+
+    0.0443
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=====MAIN MODEL=====
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mm = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear mixed-effects model fit by ML
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model information:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Number of observations             164
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Fixed effects coefficients           3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Random effects coefficients         98
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Covariance parameters                2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Formula:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    ta ~ 1 + study_str + (1 | ids)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model fit statistics:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    AIC        BIC        LogLikelihood    Deviance
+    -431.94    -416.44    220.97           -441.94 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fixed effects coefficients (95% CIs):
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Name                      Estimate    SE        tStat     DF     pValue    
+    &#39;(Intercept)&#39;             34.944      1.3133    26.608    161    7.9636e-61
+    &#39;study_str_study1&#39;        5.5379      1.9856    2.7891    161      0.005923
+    &#39;study_str_study3&#39;         5.762      1.8844    3.0577    161     0.0026127
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Lower     Upper 
+     32.35    37.538
+    1.6168     9.459
+    2.0406    9.4833
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random effects covariance parameters (95% CIs):
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Group: ids (98 Levels)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Name1                Name2                Type         Estimate    Lower
+    &#39;(Intercept)&#39;        &#39;(Intercept)&#39;        &#39;std&#39;        7.8801      NaN  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Upper
+    NaN  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Group: Error
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Name             Estimate      Lower    Upper
+    &#39;Res Std&#39;        3.6582e-05    NaN      NaN  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans = 
+
+
+    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Term                 FStat     DF1    DF2    pValue    
+    &#39;(Intercept)&#39;        707.98    1      161    7.9636e-61
+    &#39;study_str&#39;          5.8832    2      161       0.00342
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="_images/variable_distributions_5_42.png" src="_images/variable_distributions_5_42.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="shock-intensity">
+<h2>Shock intensity<a class="headerlink" href="#shock-intensity" title="Permalink to this headline">¶</a></h2>
+<p>(all in mA)</p>
+<div class="section" id="id1">
+<h3>Overall<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">=</span><span class="n">figure</span><span class="p">;</span>
+<span class="n">edges</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">2000</span><span class="p">;</span> 
+<span class="n">h</span><span class="p">=</span><span class="n">histogram</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">sh_int</span><span class="p">,</span> <span class="n">edges</span><span class="p">);</span> <span class="n">hold</span> <span class="s">on</span>
+<span class="n">h</span><span class="p">.</span><span class="n">FaceAlpha</span><span class="p">=</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="n">h</span><span class="p">.</span><span class="n">FaceColor</span><span class="p">=</span><span class="n">cs</span><span class="p">(</span><span class="mi">4</span><span class="p">,:);</span>
+<span class="n">h</span><span class="p">=</span><span class="n">histogram</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">sh_int</span><span class="p">,</span> <span class="n">edges</span><span class="p">);</span>  
+<span class="n">h</span><span class="p">.</span><span class="n">FaceAlpha</span><span class="p">=</span> <span class="mf">0.2</span><span class="p">;</span>
+<span class="n">h</span><span class="p">.</span><span class="n">FaceColor</span><span class="p">=</span><span class="n">cs</span><span class="p">(</span><span class="mi">4</span><span class="p">,:);</span>
+<span class="n">legend</span><span class="p">({</span> <span class="s">&#39;After exclusions&#39;</span><span class="p">,</span> <span class="s">&#39;Collected&#39;</span><span class="p">});</span>
+<span class="n">title</span><span class="p">({</span><span class="s">&#39;Shock intensity distribution&#39;</span><span class="p">});</span>
+<span class="n">nanmedian</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">sh_int</span><span class="p">)</span>
+<span class="n">nanmedian</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">sh_int</span><span class="p">)</span>
+<span class="p">[</span><span class="n">H</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">KSSTAT</span><span class="p">]</span> <span class="p">=</span> <span class="n">kstest2</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">sh_int</span><span class="p">,</span><span class="n">dt_used</span><span class="p">.</span><span class="n">sh_int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+   280
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+  289.5000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
+
+  logical
+
+   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P =
+
+     1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KSSTAT =
+
+    0.0186
+</pre></div>
+</div>
+<img alt="_images/variable_distributions_9_5.png" src="_images/variable_distributions_9_5.png" />
+</div>
+</div>
+</div>
+<div class="section" id="by-study-and-anxiety">
+<h3>By study and anxiety<a class="headerlink" href="#by-study-and-anxiety" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">=</span><span class="n">figure</span><span class="p">;</span>
+<span class="n">for</span> <span class="s">st</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span>
+    <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">st</span><span class="p">)</span>
+
+    <span class="n">h</span><span class="p">=</span><span class="n">histogram</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">sh_int</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">study</span><span class="o">==</span><span class="n">st</span><span class="p">),</span> <span class="n">edges</span><span class="p">);</span>  <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">h</span><span class="p">.</span><span class="n">FaceAlpha</span><span class="p">=</span> <span class="mf">0.5</span><span class="p">;</span>
+    <span class="n">h</span><span class="p">.</span><span class="n">FaceColor</span><span class="p">=</span><span class="n">cs</span><span class="p">(</span><span class="n">st</span><span class="p">,:);</span>
+    <span class="n">h</span><span class="p">=</span><span class="n">histogram</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">sh_int</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">study</span><span class="o">==</span><span class="n">st</span><span class="p">),</span> <span class="n">edges</span><span class="p">);</span> 
+    <span class="n">h</span><span class="p">.</span><span class="n">FaceAlpha</span><span class="p">=</span> <span class="mf">0.2</span><span class="p">;</span>
+    <span class="n">h</span><span class="p">.</span><span class="n">FaceColor</span><span class="p">=</span><span class="n">cs</span><span class="p">(</span><span class="n">st</span><span class="p">,:);</span>
+    
+    
+    <span class="n">legend</span><span class="p">({</span> <span class="s">&#39;After exclusions&#39;</span><span class="p">,</span> <span class="s">&#39;Collected&#39;</span><span class="p">},</span> <span class="s">&#39;location&#39;</span><span class="p">,</span> <span class="s">&#39;northoutside&#39;</span><span class="p">);</span>
+    <span class="n">title</span><span class="p">({[</span><span class="s">&#39;Study &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">st</span><span class="p">)]});</span>
+    <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Mean current (mA)&#39;</span><span class="p">);</span>
+    <span class="p">[</span><span class="n">H</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">KSSTAT</span><span class="p">]</span> <span class="p">=</span> <span class="n">kstest2</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">sh_int</span><span class="p">(</span><span class="n">dt_coll</span><span class="p">.</span><span class="n">study</span><span class="o">==</span><span class="n">st</span><span class="p">),</span><span class="n">dt_used</span><span class="p">.</span><span class="n">sh_int</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">study</span><span class="o">==</span><span class="n">st</span><span class="p">))</span>
+<span class="k">end</span>
+<span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">=</span> <span class="mi">700</span><span class="p">;</span>
+<span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">4</span><span class="p">)=</span><span class="mi">250</span><span class="p">;</span>
+<span class="n">cf</span><span class="p">=</span> <span class="p">[];</span> 
+<span class="n">cf</span><span class="p">.</span><span class="n">bycat</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">cf</span><span class="p">.</span><span class="nb">cat</span> <span class="p">={</span><span class="s">&#39;study_str&#39;</span><span class="p">};</span>
+<span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="p">=</span> <span class="n">pX_report_stats</span><span class="p">(</span> <span class="p">(</span><span class="n">dt_used</span><span class="p">),</span> <span class="s">&#39;sh_int&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;study_str&#39;</span><span class="p">,</span> <span class="s">&#39;ta&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;ids&#39;</span><span class="p">},</span> <span class="n">cf</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
+
+  logical
+
+   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P =
+
+    1.0000
+
+
+KSSTAT =
+
+    0.0571
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
+
+  logical
+
+   0
+
+
+P =
+
+    1.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KSSTAT =
+
+    0.0558
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
+
+  logical
+
+   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P =
+
+    1.0000
+
+
+KSSTAT =
+
+    0.0255
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=====MAIN MODEL=====
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mm = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear mixed-effects model fit by ML
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model information:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Number of observations             143
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Fixed effects coefficients           6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Random effects coefficients         90
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Covariance parameters                2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Formula:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    sh_int ~ 1 + study_str*ta + (1 | ids)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model fit statistics:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    AIC       BIC       LogLikelihood    Deviance
+    2206.8    2230.5    -1095.4          2190.8  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fixed effects coefficients (95% CIs):
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Name                         Estimate    SE        tStat       DF 
+    &#39;(Intercept)&#39;                 705.58     498.18      1.4163    137
+    &#39;study_str_study1&#39;            125.04     635.34     0.19681    137
+    &#39;study_str_study3&#39;           -667.18     617.09     -1.0812    137
+    &#39;ta&#39;                         -4.4899     13.929    -0.32235    137
+    &#39;study_str_study1:ta&#39;         3.2337     16.768     0.19285    137
+    &#39;study_str_study3:ta&#39;         15.244      16.35     0.93235    137
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    pValue     Lower      Upper 
+    0.15895    -279.54    1690.7
+    0.84427    -1131.3    1381.4
+    0.28152    -1887.4    553.08
+    0.74768    -32.033    23.053
+    0.84736    -29.924    36.392
+    0.35279    -17.087    47.576
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random effects covariance parameters (95% CIs):
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Group: ids (90 Levels)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Name1                Name2                Type         Estimate    Lower 
+    &#39;(Intercept)&#39;        &#39;(Intercept)&#39;        &#39;std&#39;        501.47      415.14
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Upper 
+    605.76
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Group: Error
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Name             Estimate    Lower     Upper 
+    &#39;Res Std&#39;        319.34      266.69    382.39
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans = 
+
+
+    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Term                  FStat      DF1    DF2    pValue 
+    &#39;(Intercept)&#39;           2.006    1      137    0.15895
+    &#39;study_str&#39;            1.2323    2      137    0.29483
+    &#39;ta&#39;                  0.10391    1      137    0.74768
+    &#39;study_str:ta&#39;        0.65297    2      137    0.52211
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=====POST-HOC: study_str:study1=====
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans = 
+
+
+    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Term                 FStat       DF1    DF2    pValue  
+    &#39;(Intercept)&#39;          6.9444    1      26     0.013985
+    &#39;ta&#39;                 0.028329    1      26      0.86764
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=====POST-HOC: study_str:study2=====
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans = 
+
+
+    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Term                 FStat      DF1    DF2    pValue 
+    &#39;(Intercept)&#39;         2.1135    1      29     0.15674
+    &#39;ta&#39;                 0.10948    1      29     0.74311
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+=====POST-HOC: study_str:study3=====
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans = 
+
+
+    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Term                 FStat        DF1    DF2    pValue 
+    &#39;(Intercept)&#39;        0.0096155    1      82     0.92213
+    &#39;ta&#39;                    1.1898    1      82     0.27856
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+</pre></div>
+</div>
+<img alt="_images/variable_distributions_11_50.png" src="_images/variable_distributions_11_50.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">=</span><span class="n">figure</span><span class="p">;</span>
+<span class="n">pX_subject_filter</span><span class="p">;</span>
+<span class="p">[</span><span class="n">dt_used</span><span class="p">]</span> <span class="p">=</span> <span class="n">pX_filter_data</span><span class="p">(</span><span class="n">sp</span><span class="p">,</span> <span class="s">&#39;pX&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+
+<span class="n">blocks</span><span class="p">={</span><span class="s">&#39;60/40&#39;</span><span class="p">,</span> <span class="s">&#39;75/25&#39;</span><span class="p">,</span> <span class="s">&#39;90/10&#39;</span><span class="p">};</span>
+<span class="n">for</span> <span class="s">b</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span>
+ 
+        <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+        <span class="n">ta</span><span class="p">=[];</span><span class="n">ta</span> <span class="p">=</span> <span class="n">dt_used</span><span class="p">.</span><span class="n">ta</span><span class="p">(</span><span class="n">ismember</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">contingency</span><span class="p">,</span> <span class="n">blocks</span><span class="p">{</span><span class="n">b</span><span class="p">}));</span>
+        <span class="n">sh</span><span class="p">=[];</span><span class="n">sh</span> <span class="p">=</span> <span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">sh_int</span><span class="p">(</span><span class="n">find_str_in_cell_exact</span><span class="p">(</span><span class="n">dt_used</span><span class="p">.</span><span class="n">contingency</span><span class="p">,</span> <span class="n">blocks</span><span class="p">{</span><span class="n">b</span><span class="p">})));</span>
+        <span class="n">idx</span><span class="p">=[];</span><span class="n">idx</span><span class="p">=</span> <span class="nb">isnan</span><span class="p">(</span><span class="n">ta</span><span class="p">)</span> <span class="o">|</span> <span class="nb">isnan</span><span class="p">(</span><span class="n">sh</span><span class="p">);</span>
+        <span class="n">ta</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="p">=[];</span>
+        <span class="n">sh</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="p">=[];</span>
+        
+        <span class="n">scatter</span><span class="p">(</span><span class="n">sh</span><span class="p">,</span> <span class="n">ta</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s">&#39;MarkerFaceColor&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.34</span> <span class="mf">0.48</span> <span class="mf">0.80</span><span class="p">],</span> <span class="s">&#39;MarkerEdgeColor&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span>
+        <span class="n">plot_linear_fit</span><span class="p">(</span><span class="n">sh</span><span class="p">,</span> <span class="n">ta</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">],</span> <span class="mf">1.4</span><span class="p">);</span>
+        <span class="n">add_correlation</span><span class="p">(</span><span class="n">sh</span><span class="p">,</span> <span class="n">ta</span><span class="p">,</span> <span class="p">[</span><span class="n">blocks</span><span class="p">{</span><span class="n">b</span><span class="p">}</span> <span class="s">&#39;, &#39;</span><span class="p">])</span>    
+        <span class="c">%xlim([-0.1 0.8])</span>
+        <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Shock intensity&#39;</span><span class="p">);</span>
+        <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Trait anxiety&#39;</span><span class="p">);</span>
+ 
+<span class="n">end</span>
+<span class="s">f.Position(3)</span> <span class="p">=</span> <span class="mi">800</span><span class="p">;</span>
+<span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">=</span><span class="mi">300</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running with visit 1 from Losartan!
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw participants: 116
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Excluded for missing anxiety scores:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    &#39;ss11&#39;
+    &#39;ss31&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Participans after anx exlc.: 114
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Excluded for failure to distinguish harm from safe:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    &#39;f27&#39;
+    &#39;m01&#39;
+    &#39;m06&#39;
+    &#39;m29&#39;
+    &#39;m39&#39;
+    &#39;pl16&#39;
+    &#39;pl20&#39;
+    &#39;ss18&#39;
+    &#39;ss19&#39;
+    &#39;ss7&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Participans after dist exlc.: 104
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   pl9 ... excluding for misunderstanding the task
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ss8_bl7525 ... excluding for missing more than 50% of data
+   ss4_bl6040 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   m01_v1 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   m13_v1 ... excluding for missing more than 50% of data
+   f39_v1 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   f38_v1 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Participans after all exlc.: 98
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    0.2531
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    0.0538
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    0.2668
+</pre></div>
+</div>
+<img alt="_images/variable_distributions_12_17.png" src="_images/variable_distributions_12_17.png" />
+</div>
+</div>
+</div>
+<div class="section" id="by-probability-data">
+<h3>By probability data<a class="headerlink" href="#by-probability-data" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">pX_subject_filter</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">SData</span><span class="p">]</span> <span class="p">=</span> <span class="n">pX_filter_data</span><span class="p">(</span><span class="n">sp</span><span class="p">,</span> <span class="s">&#39;pX&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">subIDs</span> <span class="p">=</span> <span class="n">cellstr</span><span class="p">(</span><span class="n">SData</span><span class="p">.</span><span class="n">specID</span><span class="p">);</span>
+
+<span class="n">data</span> <span class="p">=</span> <span class="n">pX_build_dataset</span><span class="p">(</span><span class="n">subIDs</span><span class="p">,</span> <span class="n">SData</span><span class="p">,</span> <span class="s">&#39;real_data&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="n">dloc</span> <span class="p">=</span> <span class="n">data</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">phase</span><span class="o">~=</span><span class="mi">0</span> <span class="o">&amp;</span> <span class="n">data</span><span class="p">.</span><span class="n">Trial_Type</span><span class="o">==</span><span class="mi">3</span><span class="p">),:);</span>
+<span class="p">[</span><span class="n">GS</span><span class="p">,</span> <span class="n">Gkey</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">Skey</span><span class="p">,</span> <span class="n">mle</span><span class="p">]</span> <span class="p">=</span> <span class="n">pX_get_stats</span><span class="p">(</span><span class="n">dloc</span><span class="p">,</span> <span class="n">dloc</span><span class="p">.(</span><span class="n">err_var</span><span class="p">),</span> <span class="p">{</span><span class="s">&#39;phase&#39;</span><span class="p">,</span> <span class="s">&#39;sh_int&#39;</span><span class="p">,</span> <span class="s">&#39;contingency&#39;</span><span class="p">});</span>
+<span class="n">f</span><span class="p">=</span><span class="n">figure</span><span class="p">;</span>
+<span class="n">phstr</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;Acq&#39;</span><span class="p">,</span> <span class="s">&#39;Ext&#39;</span><span class="p">};</span>
+<span class="n">for</span> <span class="s">b</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span>
+    <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+    
+    <span class="n">tstr</span> <span class="p">=</span> <span class="p">{};</span>
+    <span class="n">for</span> <span class="s">ph</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span>
+            <span class="n">d</span> <span class="p">=</span> <span class="n">S</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">ismember</span><span class="p">(</span><span class="n">Skey</span><span class="p">.</span><span class="n">contingency</span><span class="p">,</span> <span class="n">blocks</span><span class="p">{</span><span class="n">b</span><span class="p">})</span> <span class="o">&amp;</span> <span class="n">ismember</span><span class="p">(</span><span class="n">Skey</span><span class="p">.</span><span class="n">phase</span><span class="p">,</span> <span class="n">ph</span><span class="p">)));</span>
+        <span class="n">ta</span><span class="p">=[];</span> <span class="n">ta</span><span class="p">=</span> <span class="n">Skey</span><span class="p">.</span><span class="n">sh_int</span><span class="p">(</span><span class="n">ismember</span><span class="p">(</span><span class="n">Skey</span><span class="p">.</span><span class="n">contingency</span><span class="p">,</span> <span class="n">blocks</span><span class="p">{</span><span class="n">b</span><span class="p">})</span> <span class="o">&amp;</span> <span class="n">ismember</span><span class="p">(</span><span class="n">Skey</span><span class="p">.</span><span class="n">phase</span><span class="p">,</span> <span class="n">ph</span><span class="p">));</span>
+        <span class="c">%t=gca; t.XTick = [1 2]; t.XTickLabel = cuestr;</span>
+        <span class="n">scatter</span><span class="p">(</span><span class="n">ta</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s">&#39;MarkerFaceColor&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="p">(</span><span class="n">ph</span><span class="o">*</span><span class="mi">2</span><span class="p">,:),</span> <span class="s">&#39;MarkerEdgeColor&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;MarkerFaceAlpha&#39;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">);</span>
+        <span class="n">plot_linear_fit</span><span class="p">(</span><span class="n">ta</span><span class="p">,</span><span class="n">d</span><span class="p">,</span> <span class="n">cols</span><span class="p">(</span><span class="n">ph</span><span class="o">*</span><span class="mi">2</span><span class="p">,:),</span> <span class="mf">1.4</span><span class="p">);</span>
+        <span class="p">[</span><span class="n">R</span><span class="p">,</span><span class="n">P</span><span class="p">]</span> <span class="p">=</span> <span class="n">corr</span><span class="p">(</span><span class="n">ta</span><span class="p">,</span><span class="n">d</span><span class="p">,</span> <span class="s">&#39;type&#39;</span><span class="p">,</span><span class="s">&#39;Pearson&#39;</span><span class="p">);</span>
+        <span class="n">tstr</span><span class="p">{</span><span class="n">ph</span><span class="p">}</span> <span class="p">=</span> <span class="p">[</span><span class="n">phstr</span><span class="p">{</span><span class="n">ph</span><span class="p">}</span> <span class="s">&#39;: $\rho=&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="s">&#39;\hspace{0.2cm} p=&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>   <span class="s">&#39;$&#39;</span><span class="p">];</span>
+    <span class="n">end</span>
+    <span class="s">t=title(tstr,</span> <span class="s">&quot;Interpreter&quot;,&quot;latex&quot;)</span><span class="p">;</span>
+    <span class="n">if</span> <span class="s">b==1</span>
+        <span class="n">ylabel</span><span class="p">({</span><span class="s">&#39;Error from true reinforcement&#39;</span><span class="p">,</span> <span class="s">&#39;(positive means overprediction)&#39;</span><span class="p">});</span>
+    <span class="n">end</span>
+    <span class="s">xlabel(&#39;Mean current (mA)&#39;)</span>
+<span class="k">end</span>
+
+<span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">=</span><span class="mi">800</span><span class="p">;</span>
+<span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">=</span><span class="mi">280</span><span class="p">;</span>
+
+<span class="n">dloc</span> <span class="p">=</span> <span class="n">data</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">phase</span><span class="o">~=</span><span class="mi">0</span> <span class="o">&amp;</span> <span class="n">data</span><span class="p">.</span><span class="n">Trial_Type</span><span class="o">==</span><span class="mi">3</span><span class="p">),:);</span>
+<span class="n">cf</span><span class="p">=</span> <span class="p">[];</span> 
+<span class="n">cf</span><span class="p">.</span><span class="n">bycat</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">cf</span><span class="p">.</span><span class="nb">cat</span> <span class="p">={</span><span class="s">&#39;contingency&#39;</span><span class="p">};</span>
+<span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="p">=</span> <span class="n">pX_report_stats</span><span class="p">(</span><span class="n">dloc</span><span class="p">,</span> <span class="n">err_var</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;phase_str&#39;</span><span class="p">,</span> <span class="s">&#39;sh_int&#39;</span><span class="p">,</span> <span class="s">&#39;contingency&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;specID&#39;</span><span class="p">,</span> <span class="s">&#39;study&#39;</span><span class="p">},</span> <span class="n">cf</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running with visit 1 from Losartan!
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw participants: 116
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Excluded for missing anxiety scores:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    &#39;ss11&#39;
+    &#39;ss31&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Participans after anx exlc.: 114
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Excluded for failure to distinguish harm from safe:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    &#39;f27&#39;
+    &#39;m01&#39;
+    &#39;m06&#39;
+    &#39;m29&#39;
+    &#39;m39&#39;
+    &#39;pl16&#39;
+    &#39;pl20&#39;
+    &#39;ss18&#39;
+    &#39;ss19&#39;
+    &#39;ss7&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Participans after dist exlc.: 104
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   pl9 ... excluding for misunderstanding the task
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ss8_bl7525 ... excluding for missing more than 50% of data
+   ss4_bl6040 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   m01_v1 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   m13_v1 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   f39_v1 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   f38_v1 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Participans after all exlc.: 98
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading pre-computed data structure
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=====MAIN MODEL=====
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mm = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear mixed-effects model fit by ML
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model information:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Number of observations             286
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Fixed effects coefficients          12
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Random effects coefficients        146
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Covariance parameters                3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Formula:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Linear Mixed Formula with 5 predictors.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model fit statistics:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    AIC        BIC       LogLikelihood    Deviance
+    -193.44    -138.6    111.72           -223.44 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fixed effects coefficients (95% CIs):
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Name                                            Estimate       SE        
+    &#39;(Intercept)&#39;                                     -0.078256      0.024252
+    &#39;phase_str_ext&#39;                                     0.38723      0.030277
+    &#39;sh_int&#39;                                        -2.9606e-05     2.651e-05
+    &#39;contingency_60/40&#39;                                0.056272      0.048004
+    &#39;contingency_90/10&#39;                               -0.043975      0.046382
+    &#39;phase_str_ext:sh_int&#39;                             1.43e-06    3.3096e-05
+    &#39;phase_str_ext:contingency_60/40&#39;                  -0.17692       0.05993
+    &#39;phase_str_ext:contingency_90/10&#39;                  0.041882      0.057905
+    &#39;sh_int:contingency_60/40&#39;                       1.3625e-06    6.2032e-05
+    &#39;sh_int:contingency_90/10&#39;                       5.1471e-05    5.7824e-05
+    &#39;phase_str_ext:sh_int:contingency_60/40&#39;        -2.2474e-05    7.7444e-05
+    &#39;phase_str_ext:sh_int:contingency_90/10&#39;        -4.8963e-05     7.219e-05
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    tStat       DF     pValue        Lower          Upper     
+     -3.2268    274     0.0014039         -0.126     -0.030512
+       12.79    274    1.1008e-29        0.32763       0.44684
+     -1.1168    274       0.26507    -8.1794e-05    2.2583e-05
+      1.1722    274       0.24212      -0.038231       0.15077
+     -0.9481    274       0.34391       -0.13529      0.047336
+    0.043209    274       0.96557    -6.3725e-05    6.6585e-05
+     -2.9521    274     0.0034298        -0.2949     -0.058936
+     0.72327    274       0.47013      -0.072115       0.15588
+    0.021964    274       0.98249    -0.00012076    0.00012348
+     0.89014    274       0.37417    -6.2364e-05    0.00016531
+     -0.2902    274       0.77188    -0.00017493    0.00012999
+    -0.67825    274       0.49819    -0.00019108    9.3154e-05
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random effects covariance parameters (95% CIs):
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Group: specID (143 Levels)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Name1                Name2                Type         Estimate    Lower   
+    &#39;(Intercept)&#39;        &#39;(Intercept)&#39;        &#39;std&#39;        0.077882    0.053246
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Upper  
+    0.11391
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Group: study (3 Levels)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Name1                Name2                Type         Estimate      Lower
+    &#39;(Intercept)&#39;        &#39;(Intercept)&#39;        &#39;std&#39;        1.3629e-07    NaN  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Upper
+    NaN  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Group: Error
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Name             Estimate    Lower      Upper  
+    &#39;Res Std&#39;        0.14635     0.13033    0.16433
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans = 
+
+
+    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Term                                  FStat       DF1    DF2    pValue    
+    &#39;(Intercept)&#39;                           10.412    1      274     0.0014039
+    &#39;phase_str&#39;                             163.57    1      274    1.1008e-29
+    &#39;sh_int&#39;                                1.2472    1      274       0.26507
+    &#39;contingency&#39;                           1.5374    2      274       0.21679
+    &#39;phase_str:sh_int&#39;                    0.001867    1      274       0.96557
+    &#39;phase_str:contingency&#39;                 5.5717    2      274     0.0042475
+    &#39;sh_int:contingency&#39;                   0.40826    2      274       0.66521
+    &#39;phase_str:sh_int:contingency&#39;         0.24288    2      274       0.78453
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=====POST-HOC: contingency:60/40=====
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans = 
+
+
+    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Term                      FStat       DF1    DF2    pValue    
+    &#39;(Intercept)&#39;              0.24185    1      50        0.62503
+    &#39;phase_str&#39;                 15.638    1      50     0.00024185
+    &#39;sh_int&#39;                    0.2178    1      50        0.64275
+    &#39;phase_str:sh_int&#39;        0.085434    1      50        0.77127
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=====POST-HOC: contingency:75/25=====
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans = 
+
+
+    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Term                      FStat        DF1    DF2    pValue    
+    &#39;(Intercept)&#39;                8.9434    1      172     0.0031936
+    &#39;phase_str&#39;                  208.18    1      172    1.9456e-31
+    &#39;sh_int&#39;                     2.0442    1      172        0.1546
+    &#39;phase_str:sh_int&#39;        0.0023761    1      172       0.96118
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=====POST-HOC: contingency:90/10=====
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans = 
+
+
+    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Term                      FStat      DF1    DF2    pValue   
+    &#39;(Intercept)&#39;              6.4157    1      52      0.014368
+    &#39;phase_str&#39;                46.711    1      52     9.086e-09
+    &#39;sh_int&#39;                  0.12153    1      52       0.72879
+    &#39;phase_str:sh_int&#39;        0.33925    1      52       0.56278
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+</pre></div>
+</div>
+<img alt="_images/variable_distributions_14_62.png" src="_images/variable_distributions_14_62.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            kernelName: "matlab",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="key_variable_checks.html" title="previous page">Key Variable Checks</a>
+    <a class='right-next' id="next-link" href="first_prob.html" title="next page">First reported value</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ondřej Zíka<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

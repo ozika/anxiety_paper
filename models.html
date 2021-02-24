@@ -58,7 +58,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Mutual cue dependence" href="mutual_cue_influence.html" />
-    <link rel="prev" title="Main page" href="landing-page.html" />
+    <link rel="prev" title="Modelling" href="modelling.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -99,15 +99,53 @@
  </span>
 </p>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Models
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="modelling.html">
+   Modelling
   </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mutual_cue_influence.html">
+     Mutual cue dependence
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mutual_cue_influence.html">
-   Mutual cue dependence
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="key_variable_checks.html">
+   Key Variable Checks
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="variable_distributions.html">
+     Variable distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="first_prob.html">
+     First reported value
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="order_effect.html">
+     Order effect
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="starting_contingency.html">
+     Starting contingency analysis
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
 
@@ -218,23 +256,30 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rescorla-wagner-rw3">
-     Rescorla-Wagner (RW3)
+    <a class="reference internal nav-link" href="#rescorla-wagner-rw-3">
+     Rescorla-Wagner (RW-3)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pearce-hall-ph5">
-     Pearce-Hall (PH5)
+    <a class="reference internal nav-link" href="#hybrid-pearce-hall">
+     Hybrid Pearce-Hall
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#standard-version-ph-5">
+       “standard” version (PH-5)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nokappa-version-phnk-4">
+       “nokappa” version (PHnk-4)
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#volatility-learner-vol6">
-     Volatility learner (VOL6)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#beta-state-inference-model-b-sim">
-     Beta State Inference Model (B-SIM)
+    <a class="reference internal nav-link" href="#beta-state-inference-model-b-sim-5">
+     Beta State Inference Model (B-SIM-5)
     </a>
    </li>
   </ul>
@@ -242,6 +287,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model-recovery">
    Model recovery
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-the-pearce-hall-model">
+   Selecting the Pearce-Hall model
   </a>
  </li>
 </ul>
@@ -260,26 +310,37 @@
 <p>This page presents overview of the models, recovery method and results.</p>
 <div class="section" id="specification-of-models">
 <h2>Specification of models<a class="headerlink" href="#specification-of-models" title="Permalink to this headline">¶</a></h2>
-<p>We made effort to minize the differences between models and to keep features that have previously been shown to improve model fit constant. This in particular concerns two model features:</p>
+<p>To make sure the difference between model fits are due to the <em>type</em> of learning each model allows, we fixed two features that change the general fit of all models:</p>
 <ol class="simple">
-<li><p><strong>Starting probability</strong> all models estimate starting probability as a free parameter</p></li>
-<li><p><strong>Outcome sensitivity</strong> all used models have separate parameter for learning from shocks versus no-shocks</p></li>
+<li><p>All considered models differentiate between learning from shocks and no-shocks - for example, the Rescorla-Wagner model has separate learning rates for learning from shocks and no-shocks.</p></li>
+<li><p>All models estimate the starting value (shock probability estimate in our case).</p></li>
 </ol>
-<div class="section" id="rescorla-wagner-rw3">
-<h3>Rescorla-Wagner (RW3)<a class="headerlink" href="#rescorla-wagner-rw3" title="Permalink to this headline">¶</a></h3>
+<p>In model short codes, the number always refers to the number of free parameters.</p>
+<div class="section" id="rescorla-wagner-rw-3">
+<h3>Rescorla-Wagner (RW-3)<a class="headerlink" href="#rescorla-wagner-rw-3" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="pearce-hall-ph5">
-<h3>Pearce-Hall (PH5)<a class="headerlink" href="#pearce-hall-ph5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="hybrid-pearce-hall">
+<h3>Hybrid Pearce-Hall<a class="headerlink" href="#hybrid-pearce-hall" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="standard-version-ph-5">
+<h4>“standard” version (PH-5)<a class="headerlink" href="#standard-version-ph-5" title="Permalink to this headline">¶</a></h4>
 </div>
-<div class="section" id="volatility-learner-vol6">
-<h3>Volatility learner (VOL6)<a class="headerlink" href="#volatility-learner-vol6" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="beta-state-inference-model-b-sim">
-<h3>Beta State Inference Model (B-SIM)<a class="headerlink" href="#beta-state-inference-model-b-sim" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="nokappa-version-phnk-4">
+<h4>“nokappa” version (PHnk-4)<a class="headerlink" href="#nokappa-version-phnk-4" title="Permalink to this headline">¶</a></h4>
 </div>
 </div>
+<div class="section" id="beta-state-inference-model-b-sim-5">
+<h3>Beta State Inference Model (B-SIM-5)<a class="headerlink" href="#beta-state-inference-model-b-sim-5" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<hr class="docutils" />
 <div class="section" id="model-recovery">
 <h2>Model recovery<a class="headerlink" href="#model-recovery" title="Permalink to this headline">¶</a></h2>
+<p>Model recovery was performed on data generated using plausible parameter values.
+By “plausibility” we mean values that:</p>
+<ol class="simple">
+<li><p>allow the value function to stay within 0 and 1</p></li>
+<li><p>resemble values fitted to participants - the datasets were generated using mean and 1 sd of fitted values</p></li>
+</ol>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">addpath</span><span class="p">(</span><span class="s">&#39;/data/drive/DPhil/THESIS/Cross_study_analyses/learning-repo/scripts&#39;</span><span class="p">)</span>
@@ -292,9 +353,12 @@
 <span class="n">for</span> <span class="s">i</span> <span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">50</span><span class="p">;</span> <span class="n">subIDs</span><span class="p">{</span><span class="nb">i</span><span class="p">}</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#39;artif_sub_&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">i</span><span class="p">)];</span> <span class="n">end</span>
 
 <span class="s">%data</span>
-<span class="n">model_data</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;cff_RW1&#39;</span><span class="p">,</span> <span class="s">&#39;cff_RW3&#39;</span><span class="p">,</span> <span class="s">&#39;cff_PH_4&#39;</span><span class="p">,</span> <span class="s">&#39;cff_PH_5&#39;</span><span class="p">,</span> <span class="s">&#39;cff_betastsw_v2g_c&#39;</span><span class="p">};</span>
-<span class="n">model_conf</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;cff_RW1&#39;</span><span class="p">,</span> <span class="s">&#39;cff_RW3&#39;</span><span class="p">,</span> <span class="s">&#39;cff_PH_4&#39;</span><span class="p">,</span> <span class="s">&#39;cff_PH_5&#39;</span><span class="p">,</span> <span class="s">&#39;cff_betastsw_v2g_c&#39;</span><span class="p">};</span>
-<span class="n">labels_short</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;RW2&#39;</span><span class="p">,</span> <span class="s">&#39;RW3&#39;</span><span class="p">,</span> <span class="s">&#39;PH4&#39;</span><span class="p">,</span> <span class="s">&#39;PH5&#39;</span><span class="p">,</span> <span class="s">&#39;B-SIM&#39;</span><span class="p">};</span>
+<span class="n">model_data</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&#39;cff_RW3&#39;</span><span class="p">,</span>  <span class="s">&#39;cff_PH_6&#39;</span><span class="p">,</span> <span class="s">&#39;cff_PH_nokappa_5&#39;</span><span class="p">,</span> <span class="s">&#39;cff_betastsw_v2g_c&#39;</span><span class="p">};</span>
+<span class="n">model_conf</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&#39;cff_RW3&#39;</span><span class="p">,</span>  <span class="s">&#39;cff_PH_6&#39;</span><span class="p">,</span> <span class="s">&#39;cff_PH_nokappa_5&#39;</span><span class="p">,</span> <span class="s">&#39;cff_betastsw_v2g_c&#39;</span><span class="p">};</span>
+
+<span class="n">labels_short</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;RW-3&#39;</span><span class="p">,</span>  <span class="s">&#39;PH-6&#39;</span><span class="p">,</span> <span class="s">&#39;PHnk-5&#39;</span><span class="p">,</span> <span class="s">&#39;B-SIM-5&#39;</span><span class="p">};</span>
+
+
 
 <span class="n">for</span> <span class="s">mdata</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">model_data</span><span class="p">)</span>
     
@@ -306,17 +370,16 @@
       <span class="n">labels</span> <span class="p">=</span> <span class="p">{};</span>
       
     <span class="n">for</span> <span class="s">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">model_conf</span><span class="p">);</span> 
-        <span class="n">eval</span><span class="p">(</span><span class="n">model_conf</span><span class="p">{</span><span class="nb">i</span><span class="p">});</span> <span class="n">spec</span><span class="p">.</span><span class="n">noruns</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>
+        <span class="n">eval</span><span class="p">(</span><span class="n">model_conf</span><span class="p">{</span><span class="nb">i</span><span class="p">});</span> <span class="c">%spec.noruns = 55;</span>
         <span class="n">labels</span><span class="p">{</span><span class="nb">i</span><span class="p">}=</span> <span class="n">spec</span><span class="p">.</span><span class="n">models</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
         <span class="n">model_str</span> <span class="p">=</span> <span class="p">[</span><span class="n">spec</span><span class="p">.</span><span class="n">models</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span> <span class="s">&#39;_fit_&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">spec</span><span class="p">.</span><span class="n">noruns</span><span class="p">)</span> <span class="s">&#39;_&#39;</span>  <span class="n">spec</span><span class="p">.</span><span class="n">err</span><span class="p">.</span><span class="n">obsFnc</span>  <span class="s">&#39;fto&#39;</span> <span class="n">spec</span><span class="p">.</span><span class="n">err</span><span class="p">.</span><span class="n">var</span> <span class="s">&#39;_full_&#39;</span> <span class="n">spec</span><span class="p">.</span><span class="n">algorithm</span> <span class="s">&#39;_&#39;</span> <span class="n">spec</span><span class="p">.</span><span class="n">error_type</span><span class="p">];</span>
         <span class="n">M</span><span class="p">{</span><span class="nb">i</span><span class="p">}=</span><span class="n">load</span><span class="p">([</span><span class="n">data_folder</span> <span class="s">&#39;/&#39;</span>  <span class="n">model_str</span> <span class="s">&#39;.mat&#39;</span><span class="p">]);</span>
-      <span class="c">%  for c = 1:3; M{i}.LR_DATA{c}(id, :) =[]; M{i}.LR_DATA{c}= [M{i}.LR_DATA{c} SData]; end</span>
     <span class="n">end</span>
 
     <span class="s">method</span> <span class="p">=</span> <span class="s">&#39;BIC&#39;</span><span class="p">;</span>
     <span class="n">AIC</span> <span class="p">={};</span>
    
-    <span class="n">pal</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">67</span> <span class="mi">188</span> <span class="mi">205</span><span class="p">;</span> <span class="n">234</span> <span class="s">53</span> <span class="s">70</span><span class="p">;</span> <span class="n">249</span> <span class="s">200</span> <span class="s">14</span><span class="p">;</span> <span class="n">102</span> <span class="s">46</span> <span class="s">155</span><span class="p">;</span>   <span class="n">12</span> <span class="s">250</span> <span class="s">120</span><span class="p">;</span> <span class="n">248</span> <span class="s">102</span> <span class="s">36</span><span class="p">;</span> <span class="n">30</span> <span class="s">30</span> <span class="s">240]./255</span><span class="p">;</span>
+    <span class="n">pal</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">67</span> <span class="mi">188</span> <span class="mi">205</span><span class="p">;</span> <span class="n">234</span> <span class="s">53</span> <span class="s">70</span><span class="p">;</span> <span class="n">249</span> <span class="s">200</span> <span class="s">14</span><span class="p">;</span> <span class="n">102</span> <span class="s">46</span> <span class="s">155</span><span class="p">;</span>   <span class="n">12</span> <span class="s">250</span> <span class="s">120</span><span class="p">;</span> <span class="n">248</span> <span class="s">102</span> <span class="s">36</span><span class="p">;</span> <span class="n">30</span> <span class="s">30</span> <span class="s">240</span><span class="p">;</span> <span class="n">150</span> <span class="s">23</span> <span class="s">234</span><span class="p">;</span><span class="n">150</span>  <span class="s">198</span> <span class="s">23</span><span class="p">;</span> <span class="n">0</span> <span class="s">120</span> <span class="s">120]./255</span><span class="p">;</span>
     <span class="n">for</span> <span class="s">c</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span>
         <span class="n">AIC</span><span class="p">{</span><span class="n">c</span><span class="p">}=</span><span class="n">table</span><span class="p">;</span>
        
@@ -335,19 +398,20 @@
       
             <span class="n">mens</span> <span class="p">=[];</span>
             <span class="n">for</span> <span class="s">m</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">model_conf</span><span class="p">)</span>
-                <span class="n">me</span> <span class="p">=</span> <span class="n">data</span><span class="p">.([</span><span class="s">&#39;m&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="s">&#39;_AIC&#39;</span><span class="p">]);</span>
+                <span class="n">me</span> <span class="p">=</span> <span class="p">(</span><span class="n">data</span><span class="p">.([</span><span class="s">&#39;m&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="s">&#39;_AIC&#39;</span><span class="p">]));</span>
                 <span class="n">scatter</span><span class="p">(</span><span class="nb">repmat</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">length</span><span class="p">(</span><span class="n">me</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">randn</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">me</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">me</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">pal</span><span class="p">(</span><span class="n">m</span><span class="p">,:),</span> <span class="s">&#39;filled&#39;</span><span class="p">,</span> <span class="s">&#39;MarkerEdgeColor&#39;</span><span class="p">,</span><span class="s">&quot;none&quot;</span><span class="p">,</span> <span class="s">&#39;MarkerFaceAlpha&#39;</span><span class="p">,</span> <span class="mf">0.2</span> <span class="p">);</span>
                 <span class="n">hold</span> <span class="s">on</span><span class="p">;</span>
                 <span class="n">plot_mse_pretty</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">me</span><span class="p">,</span> <span class="n">pal</span><span class="p">(</span><span class="n">m</span><span class="p">,:),</span> <span class="s">&#39;mean&#39;</span><span class="p">,</span> <span class="s">&#39;se&#39;</span><span class="p">,</span> <span class="s">&#39;off&#39;</span><span class="p">);</span>
-                <span class="c">%plot_mse_pretty(m+0.25, me, pal(m,:), &#39;med&#39;, &#39;perc&#39;);</span>
                 <span class="n">mens</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="p">=</span> <span class="n">nanmean</span><span class="p">(</span><span class="n">me</span><span class="p">);</span>
+                  
+            
                 
             <span class="n">end</span>
             <span class="s">minn</span> <span class="p">=</span> <span class="nb">find</span><span class="p">(</span><span class="n">mens</span><span class="o">==</span><span class="n">min</span><span class="p">(</span><span class="n">mens</span><span class="p">));</span>
             <span class="n">plot</span><span class="p">([</span><span class="mf">0.5</span> <span class="nb">numel</span><span class="p">(</span><span class="n">model_conf</span><span class="p">)</span><span class="o">+</span><span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="n">mens</span><span class="p">(</span><span class="n">minn</span><span class="p">)</span> <span class="n">mens</span><span class="p">(</span><span class="n">minn</span><span class="p">)],</span> <span class="s">&#39;Color&#39;</span><span class="p">,</span> <span class="n">pal</span><span class="p">(</span><span class="n">minn</span><span class="p">,:),</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
             
             
-            <span class="n">title</span><span class="p">({[</span><span class="s">&#39;True model: &#39;</span> <span class="n">model_fitting_to</span><span class="p">],[</span><span class="s">&#39;Cue &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="p">]});</span>
+            <span class="n">title</span><span class="p">({[</span><span class="s">&#39;True model: &#39;</span> <span class="n">labels_short</span><span class="p">{</span><span class="n">mdata</span><span class="p">}],[</span><span class="s">&#39;Cue &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="p">]});</span>
             <span class="n">t</span><span class="p">=</span><span class="n">gca</span><span class="p">;</span>
             <span class="n">t</span><span class="p">.</span><span class="n">XTick</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">model_conf</span><span class="p">);</span>
     
@@ -372,10 +436,8 @@
             
 
         <span class="s">end</span>
-        <span class="c">%f.Position(3) = 750;</span>
-        <span class="c">%saveas(f, [root_path &#39;learning-repo/docs/img/model_rec/&#39; model_fitting_to &#39;.pdf&#39;]);</span>
-        <span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span>
-        <span class="c">%saveas(f, [root_path &#39;learning-repo/docs/img/model_rec/&#39; model_fitting_to &#39;.png&#39;]);</span>
+
+        <span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">=</span> <span class="mi">1200</span><span class="p">;</span>
 <span class="n">end</span>
 </pre></div>
 </div>
@@ -386,28 +448,27 @@
     &#39;9.6.0.1099231 (R2019a) Update 1&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data set: RW_1
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data set: RW_3
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data set: RW_PH_hybrid_4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data set: RW_PH_hybrid_6
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data set: RW_PH_hybrid_5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data set: RW_PH_hybrid_nokappa_5
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data set: betaStSw_v2g_c
 </pre></div>
 </div>
-<img alt="_images/models_2_6.png" src="_images/models_2_6.png" />
-<img alt="_images/models_2_7.png" src="_images/models_2_7.png" />
-<img alt="_images/models_2_8.png" src="_images/models_2_8.png" />
-<img alt="_images/models_2_9.png" src="_images/models_2_9.png" />
-<img alt="_images/models_2_10.png" src="_images/models_2_10.png" />
+<img alt="_images/models_3_5.png" src="_images/models_3_5.png" />
+<img alt="_images/models_3_6.png" src="_images/models_3_6.png" />
+<img alt="_images/models_3_7.png" src="_images/models_3_7.png" />
+<img alt="_images/models_3_8.png" src="_images/models_3_8.png" />
 </div>
 </div>
+</div>
+<div class="section" id="selecting-the-pearce-hall-model">
+<h2>Selecting the Pearce-Hall model<a class="headerlink" href="#selecting-the-pearce-hall-model" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -439,7 +500,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="landing-page.html" title="previous page">Main page</a>
+    <a class='left-prev' id="prev-link" href="modelling.html" title="previous page">Modelling</a>
     <a class='right-next' id="next-link" href="mutual_cue_influence.html" title="next page">Mutual cue dependence</a>
 
     </div>
