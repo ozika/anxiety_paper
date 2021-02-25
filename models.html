@@ -290,8 +290,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#selecting-the-pearce-hall-model">
-   Selecting the Pearce-Hall model
+  <a class="reference internal nav-link" href="#parameter-recovery">
+   Parameter recovery
   </a>
  </li>
 </ul>
@@ -350,13 +350,13 @@ By “plausibility” we mean values that:</p>
 <span class="n">pX_analysis_init</span><span class="p">;</span> <span class="c">%wipes the entire workspace</span>
 
 <span class="n">subIDs</span> <span class="p">={};</span>
-<span class="n">for</span> <span class="s">i</span> <span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">50</span><span class="p">;</span> <span class="n">subIDs</span><span class="p">{</span><span class="nb">i</span><span class="p">}</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#39;artif_sub_&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">i</span><span class="p">)];</span> <span class="n">end</span>
+<span class="n">for</span> <span class="s">i</span> <span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">;</span> <span class="n">subIDs</span><span class="p">{</span><span class="nb">i</span><span class="p">}</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#39;artif_sub_&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">i</span><span class="p">)];</span> <span class="n">end</span>
 
 <span class="s">%data</span>
 <span class="n">model_data</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&#39;cff_RW3&#39;</span><span class="p">,</span>  <span class="s">&#39;cff_PH_6&#39;</span><span class="p">,</span> <span class="s">&#39;cff_PH_nokappa_5&#39;</span><span class="p">,</span> <span class="s">&#39;cff_betastsw_v2g_c&#39;</span><span class="p">};</span>
 <span class="n">model_conf</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&#39;cff_RW3&#39;</span><span class="p">,</span>  <span class="s">&#39;cff_PH_6&#39;</span><span class="p">,</span> <span class="s">&#39;cff_PH_nokappa_5&#39;</span><span class="p">,</span> <span class="s">&#39;cff_betastsw_v2g_c&#39;</span><span class="p">};</span>
 
-<span class="n">labels_short</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;RW-3&#39;</span><span class="p">,</span>  <span class="s">&#39;PH-6&#39;</span><span class="p">,</span> <span class="s">&#39;PHnk-5&#39;</span><span class="p">,</span> <span class="s">&#39;B-SIM-5&#39;</span><span class="p">};</span>
+<span class="n">labels_short</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;RW-3&#39;</span><span class="p">,</span>  <span class="s">&#39;PH-6&#39;</span><span class="p">,</span> <span class="s">&#39;PHnk-5&#39;</span><span class="p">,</span>  <span class="s">&#39;B-SIM-5&#39;</span><span class="p">};</span>
 
 
 
@@ -374,6 +374,7 @@ By “plausibility” we mean values that:</p>
         <span class="n">labels</span><span class="p">{</span><span class="nb">i</span><span class="p">}=</span> <span class="n">spec</span><span class="p">.</span><span class="n">models</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
         <span class="n">model_str</span> <span class="p">=</span> <span class="p">[</span><span class="n">spec</span><span class="p">.</span><span class="n">models</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span> <span class="s">&#39;_fit_&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">spec</span><span class="p">.</span><span class="n">noruns</span><span class="p">)</span> <span class="s">&#39;_&#39;</span>  <span class="n">spec</span><span class="p">.</span><span class="n">err</span><span class="p">.</span><span class="n">obsFnc</span>  <span class="s">&#39;fto&#39;</span> <span class="n">spec</span><span class="p">.</span><span class="n">err</span><span class="p">.</span><span class="n">var</span> <span class="s">&#39;_full_&#39;</span> <span class="n">spec</span><span class="p">.</span><span class="n">algorithm</span> <span class="s">&#39;_&#39;</span> <span class="n">spec</span><span class="p">.</span><span class="n">error_type</span><span class="p">];</span>
         <span class="n">M</span><span class="p">{</span><span class="nb">i</span><span class="p">}=</span><span class="n">load</span><span class="p">([</span><span class="n">data_folder</span> <span class="s">&#39;/&#39;</span>  <span class="n">model_str</span> <span class="s">&#39;.mat&#39;</span><span class="p">]);</span>
+      <span class="c">%  for c = 1:3; M{i}.LR_DATA{c}(id, :) =[]; M{i}.LR_DATA{c}= [M{i}.LR_DATA{c} SData]; end</span>
     <span class="n">end</span>
 
     <span class="s">method</span> <span class="p">=</span> <span class="s">&#39;BIC&#39;</span><span class="p">;</span>
@@ -399,8 +400,9 @@ By “plausibility” we mean values that:</p>
             <span class="n">mens</span> <span class="p">=[];</span>
             <span class="n">for</span> <span class="s">m</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">model_conf</span><span class="p">)</span>
                 <span class="n">me</span> <span class="p">=</span> <span class="p">(</span><span class="n">data</span><span class="p">.([</span><span class="s">&#39;m&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="s">&#39;_AIC&#39;</span><span class="p">]));</span>
-                <span class="n">scatter</span><span class="p">(</span><span class="nb">repmat</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">length</span><span class="p">(</span><span class="n">me</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">randn</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">me</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">me</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">pal</span><span class="p">(</span><span class="n">m</span><span class="p">,:),</span> <span class="s">&#39;filled&#39;</span><span class="p">,</span> <span class="s">&#39;MarkerEdgeColor&#39;</span><span class="p">,</span><span class="s">&quot;none&quot;</span><span class="p">,</span> <span class="s">&#39;MarkerFaceAlpha&#39;</span><span class="p">,</span> <span class="mf">0.2</span> <span class="p">);</span>
+                <span class="c">%scatter(repmat(m, length(me),1)+randn(length(me),1)*0.03, me, 20, pal(m,:), &#39;filled&#39;, &#39;MarkerEdgeColor&#39;,&quot;none&quot;, &#39;MarkerFaceAlpha&#39;, 0.1 );</span>
                 <span class="n">hold</span> <span class="s">on</span><span class="p">;</span>
+                <span class="c">%plot_mse_pretty(m+0.25, me, pal(m,:), &#39;med&#39;, &#39;perc&#39;, &#39;off&#39;);</span>
                 <span class="n">plot_mse_pretty</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">me</span><span class="p">,</span> <span class="n">pal</span><span class="p">(</span><span class="n">m</span><span class="p">,:),</span> <span class="s">&#39;mean&#39;</span><span class="p">,</span> <span class="s">&#39;se&#39;</span><span class="p">,</span> <span class="s">&#39;off&#39;</span><span class="p">);</span>
                 <span class="n">mens</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="p">=</span> <span class="n">nanmean</span><span class="p">(</span><span class="n">me</span><span class="p">);</span>
                   
@@ -410,34 +412,37 @@ By “plausibility” we mean values that:</p>
             <span class="s">minn</span> <span class="p">=</span> <span class="nb">find</span><span class="p">(</span><span class="n">mens</span><span class="o">==</span><span class="n">min</span><span class="p">(</span><span class="n">mens</span><span class="p">));</span>
             <span class="n">plot</span><span class="p">([</span><span class="mf">0.5</span> <span class="nb">numel</span><span class="p">(</span><span class="n">model_conf</span><span class="p">)</span><span class="o">+</span><span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="n">mens</span><span class="p">(</span><span class="n">minn</span><span class="p">)</span> <span class="n">mens</span><span class="p">(</span><span class="n">minn</span><span class="p">)],</span> <span class="s">&#39;Color&#39;</span><span class="p">,</span> <span class="n">pal</span><span class="p">(</span><span class="n">minn</span><span class="p">,:),</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
             
-            
-            <span class="n">title</span><span class="p">({[</span><span class="s">&#39;True model: &#39;</span> <span class="n">labels_short</span><span class="p">{</span><span class="n">mdata</span><span class="p">}],[</span><span class="s">&#39;Cue &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="p">]});</span>
-            <span class="n">t</span><span class="p">=</span><span class="n">gca</span><span class="p">;</span>
+            <span class="n">if</span> <span class="s">c</span> <span class="p">==</span><span class="mi">2</span>
+                    <span class="n">title</span><span class="p">({[</span><span class="s">&#39;True model: &#39;</span> <span class="n">labels_short</span><span class="p">{</span><span class="n">mdata</span><span class="p">}],[</span><span class="s">&#39;Cue &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="p">]});</span>
+            <span class="n">else</span>
+                 <span class="s">title({[&#39;&#39;],[&#39;Cue &#39;</span> <span class="s">num2str(c)</span>  <span class="s">]})</span><span class="p">;</span>
+            <span class="n">end</span>
+            <span class="s">t=gca</span><span class="p">;</span>
             <span class="n">t</span><span class="p">.</span><span class="n">XTick</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">model_conf</span><span class="p">);</span>
     
             <span class="n">t</span><span class="p">.</span><span class="n">XTickLabelRotation</span> <span class="p">=</span> <span class="mi">30</span><span class="p">;</span>
             <span class="n">ylabel</span><span class="p">(</span><span class="n">method</span><span class="p">);</span>
             <span class="n">t</span><span class="p">.</span><span class="n">XTickLabel</span><span class="p">=</span><span class="n">labels_short</span><span class="p">;</span>
             
-            <span class="n">if</span> <span class="s">mdata</span> <span class="p">==</span> <span class="mi">3</span> <span class="o">&amp;</span> <span class="n">c</span><span class="o">==</span><span class="mi">2</span>
-                <span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">130</span> <span class="mi">40</span><span class="p">]);</span>
-                <span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">110</span><span class="p">,</span> <span class="s">&#39;True model&#39;</span><span class="p">);</span>
-                <span class="n">plot</span><span class="p">([</span><span class="mf">0.2</span> <span class="mf">0.8</span><span class="p">],</span> <span class="nb">repmat</span><span class="p">(</span><span class="o">-</span><span class="mi">110</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="s">&#39;Color&#39;</span><span class="p">,</span>  <span class="n">pal</span><span class="p">(</span><span class="n">mdata</span><span class="p">,:),</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-                <span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="s">&#39;Winning model&#39;</span><span class="p">);</span>
-                <span class="n">plot</span><span class="p">([</span><span class="mf">0.2</span> <span class="mf">0.8</span><span class="p">],</span> <span class="nb">repmat</span><span class="p">(</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="s">&#39;Color&#39;</span><span class="p">,</span>  <span class="n">pal</span><span class="p">(</span><span class="n">minn</span><span class="p">,:),</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-            <span class="n">else</span>
-                <span class="s">ylim([mean(mens)-70</span> <span class="s">mean(mens)+70])</span><span class="p">;</span>
-                <span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mean</span><span class="p">(</span><span class="n">mens</span><span class="p">)</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="s">&#39;True model&#39;</span><span class="p">);</span>
-                <span class="n">plot</span><span class="p">([</span><span class="mf">0.2</span> <span class="mf">0.8</span><span class="p">],</span> <span class="nb">repmat</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">mens</span><span class="p">)</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="s">&#39;Color&#39;</span><span class="p">,</span>  <span class="n">pal</span><span class="p">(</span><span class="n">mdata</span><span class="p">,:),</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-                <span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mean</span><span class="p">(</span><span class="n">mens</span><span class="p">)</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="s">&#39;Winning model&#39;</span><span class="p">);</span>
-                <span class="n">plot</span><span class="p">([</span><span class="mf">0.2</span> <span class="mf">0.8</span><span class="p">],</span> <span class="nb">repmat</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">mens</span><span class="p">)</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="s">&#39;Color&#39;</span><span class="p">,</span>  <span class="n">pal</span><span class="p">(</span><span class="n">minn</span><span class="p">,:),</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-            <span class="n">end</span>
+            <span class="c">%if mdata == 3 &amp; c==2</span>
+            <span class="c">%    ylim([-130 40]);</span>
+            <span class="c">%    text(1, -110, &#39;True model&#39;);</span>
+            <span class="c">%    plot([0.2 0.8], repmat(-110, 1,2), &#39;Color&#39;,  pal(mdata,:), &#39;LineWidth&#39;, 4);</span>
+            <span class="c">%    text(1, -120, &#39;Winning model&#39;);</span>
+            <span class="c">%    plot([0.2 0.8], repmat(-120,1,2), &#39;Color&#39;,  pal(minn,:), &#39;LineWidth&#39;, 4);</span>
+            <span class="c">%else</span>
+                <span class="n">ylim</span><span class="p">([</span><span class="n">mean</span><span class="p">(</span><span class="n">mens</span><span class="p">)</span><span class="o">-</span><span class="mi">35</span> <span class="n">mean</span><span class="p">(</span><span class="n">mens</span><span class="p">)</span><span class="o">+</span><span class="mi">75</span><span class="p">]);</span>
+                <span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mean</span><span class="p">(</span><span class="n">mens</span><span class="p">)</span><span class="o">+</span><span class="mi">60</span><span class="p">,</span> <span class="s">&#39;True model&#39;</span><span class="p">);</span>
+                <span class="n">plot</span><span class="p">([</span><span class="mf">0.2</span> <span class="mf">0.8</span><span class="p">],</span> <span class="nb">repmat</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">mens</span><span class="p">)</span><span class="o">+</span><span class="mi">60</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="s">&#39;Color&#39;</span><span class="p">,</span>  <span class="n">pal</span><span class="p">(</span><span class="n">mdata</span><span class="p">,:),</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+                <span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mean</span><span class="p">(</span><span class="n">mens</span><span class="p">)</span><span class="o">+</span><span class="mi">50</span><span class="p">,</span> <span class="s">&#39;Winning model&#39;</span><span class="p">);</span>
+                <span class="n">plot</span><span class="p">([</span><span class="mf">0.2</span> <span class="mf">0.8</span><span class="p">],</span> <span class="nb">repmat</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">mens</span><span class="p">)</span><span class="o">+</span><span class="mi">50</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="s">&#39;Color&#39;</span><span class="p">,</span>  <span class="n">pal</span><span class="p">(</span><span class="n">minn</span><span class="p">,:),</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+           <span class="c">%end</span>
             
             
 
-        <span class="s">end</span>
-
-        <span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">=</span> <span class="mi">1200</span><span class="p">;</span>
+    <span class="n">end</span>
+    <span class="s">f.Position(4)</span> <span class="p">=</span> <span class="mi">220</span><span class="p">;</span>
+   
 <span class="n">end</span>
 </pre></div>
 </div>
@@ -467,8 +472,101 @@ By “plausibility” we mean values that:</p>
 </div>
 </div>
 </div>
-<div class="section" id="selecting-the-pearce-hall-model">
-<h2>Selecting the Pearce-Hall model<a class="headerlink" href="#selecting-the-pearce-hall-model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="parameter-recovery">
+<h2>Parameter recovery<a class="headerlink" href="#parameter-recovery" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="s">all</span>
+<span class="n">ca</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">comp</span> <span class="p">=</span> <span class="s">&#39;onx&#39;</span><span class="p">;</span>
+<span class="n">pX_analysis_init</span><span class="p">;</span> <span class="c">%wipes the entire workspace</span>
+
+<span class="n">model_conf</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;cff_RW3&#39;</span><span class="p">,</span> <span class="s">&#39;cff_PH_6&#39;</span><span class="p">,</span><span class="s">&#39;cff_PH_nokappa_5&#39;</span><span class="p">,</span> <span class="s">&#39;cff_betastsw_v2g_c&#39;</span><span class="p">};</span>
+<span class="n">mstr</span><span class="p">=</span> <span class="p">{</span><span class="s">&#39;Rescorla-Wagner&#39;</span><span class="p">,</span> <span class="s">&#39;Pearce-Hall with kappa&#39;</span><span class="p">,</span> <span class="s">&#39;Pearce-Hall without kappa&#39;</span><span class="p">,</span> <span class="s">&#39;Beta State Inference Model&#39;</span><span class="p">};</span>
+<span class="c">%model_conf = {};%&#39;cff_betastsw_v2g_c&#39;,};</span>
+
+<span class="n">pr</span><span class="p">.</span><span class="n">splits</span> <span class="p">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="n">pr</span><span class="p">.</span><span class="n">only_plausible</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">pr</span><span class="p">.</span><span class="n">fits</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>
+<span class="n">pr</span><span class="p">.</span><span class="n">nocombs</span> <span class="p">=</span> <span class="mi">200</span><span class="p">;</span>
+
+<span class="n">dx</span><span class="p">=</span><span class="mi">70</span><span class="p">;</span>
+<span class="n">dy</span><span class="p">=</span><span class="mi">35</span><span class="p">;</span>
+    <span class="n">gr</span> <span class="p">=</span> <span class="p">[</span><span class="mf">0.1</span> <span class="mf">0.6</span> <span class="mf">0.1</span><span class="p">];</span>
+<span class="n">for</span> <span class="s">m</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">model_conf</span><span class="p">)</span>
+    <span class="n">f</span><span class="p">=</span><span class="n">figure</span><span class="p">;</span>
+    <span class="n">eval</span><span class="p">(</span><span class="n">model_conf</span><span class="p">{</span><span class="n">m</span><span class="p">});</span>
+    <span class="n">folder</span> <span class="p">=</span> <span class="p">[</span><span class="n">output_folder</span> <span class="s">&#39;param_recovery/&#39;</span> <span class="n">spec</span><span class="p">.</span><span class="n">models</span><span class="p">{</span><span class="mi">1</span><span class="p">}];</span>
+    <span class="n">load</span><span class="p">([</span><span class="n">folder</span> <span class="s">&#39;/recov_nofits&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">pr</span><span class="p">.</span><span class="n">fits</span><span class="p">)</span> <span class="s">&#39;_combs&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">pr</span><span class="p">.</span><span class="n">nocombs</span><span class="p">)</span> <span class="s">&#39;.mat&#39;</span>  <span class="p">],</span> <span class="s">&#39;params_in&#39;</span><span class="p">,</span> <span class="s">&#39;params_out&#39;</span><span class="p">);</span>
+    <span class="n">labels</span> <span class="p">=</span> <span class="p">[</span><span class="n">strcat</span><span class="p">(</span><span class="s">&#39;orig_&#39;</span><span class="p">,</span> <span class="n">spec</span><span class="p">.</span><span class="n">labels</span><span class="p">)</span> <span class="n">strcat</span><span class="p">(</span><span class="s">&#39;rec_&#39;</span><span class="p">,</span> <span class="n">spec</span><span class="p">.</span><span class="n">labels</span><span class="p">)];</span>
+    <span class="n">labels</span><span class="p">=</span> <span class="n">replace</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="s">&#39;_&#39;</span><span class="p">,</span> <span class="s">&#39;__&#39;</span><span class="p">);</span>
+    <span class="n">D</span> <span class="p">=</span> <span class="p">[</span><span class="n">params_in</span> <span class="n">params_out</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">cols</span><span class="p">]</span> <span class="p">=</span> <span class="nb">find</span><span class="p">(</span><span class="nb">isnan</span><span class="p">(</span><span class="n">D</span><span class="p">));</span> <span class="n">D</span> <span class="p">=</span> <span class="n">D</span><span class="p">(</span><span class="n">setdiff</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">unique</span><span class="p">(</span><span class="n">row</span><span class="p">)),:);</span> 
+    <span class="p">[</span><span class="n">R</span><span class="p">,</span><span class="n">P</span><span class="p">]</span> <span class="p">=</span> <span class="n">corrcoef</span><span class="p">(</span><span class="n">D</span><span class="p">);</span>
+    <span class="n">R</span> <span class="p">=</span> <span class="n">R</span><span class="p">((</span><span class="nb">size</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,:);</span>
+    <span class="n">d</span> <span class="p">=</span> <span class="n">array2table</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">labels</span><span class="p">);</span>
+    <span class="n">g</span> <span class="p">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mi">3</span><span class="p">));</span>
+    <span class="n">g</span><span class="p">.</span><span class="n">Colormap</span> <span class="p">=</span> <span class="n">parula</span><span class="p">;</span>
+    <span class="n">g</span><span class="p">.</span><span class="n">ColorbarVisible</span> <span class="p">=</span> <span class="s">&#39;off&#39;</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">=</span><span class="n">gca</span><span class="p">;</span>
+    <span class="c">%t.XDisplayLabels = repmat(spec.labels, 1, 2);</span>
+    <span class="c">%t.YDisplayLabels = spec.labels;%repmat({&#39;&#39;}, 1, length(spec.labels));</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">XDisplayLabels</span> <span class="p">=</span> <span class="nb">repmat</span><span class="p">({</span><span class="s">&#39;&#39;</span><span class="p">},</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">length</span><span class="p">(</span><span class="n">labels</span><span class="p">));</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">YDisplayLabels</span> <span class="p">=</span> <span class="nb">repmat</span><span class="p">({</span><span class="s">&#39;&#39;</span><span class="p">},</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">length</span><span class="p">(</span><span class="n">spec</span><span class="p">.</span><span class="n">labels</span><span class="p">));</span>
+    <span class="c">% highlight the two sections</span>
+    <span class="c">%rectangle(&#39;Position&#39;,[1 2 5 6], &#39;EdgeColor&#39;, &#39;r&#39;)</span>
+    <span class="n">ax</span> <span class="p">=</span> <span class="n">axes</span><span class="p">;</span>
+    <span class="n">xw</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="o">+</span><span class="mf">0.5</span><span class="p">;</span>
+    <span class="n">yw</span><span class="p">=</span><span class="nb">length</span><span class="p">(</span><span class="n">strcat</span><span class="p">(</span><span class="s">&#39;rec__&#39;</span><span class="p">,</span> <span class="n">spec</span><span class="p">.</span><span class="n">labels</span><span class="p">))</span><span class="o">+</span><span class="mf">0.5</span><span class="p">;</span>
+    <span class="n">xlim</span><span class="p">([</span><span class="mf">0.5</span> <span class="n">xw</span><span class="p">]);</span>
+    <span class="n">ylim</span><span class="p">([</span><span class="mf">0.5</span> <span class="n">yw</span><span class="p">]);</span>
+    <span class="n">off</span> <span class="p">=</span> <span class="mf">0.01</span><span class="p">;</span>
+    <span class="n">rectangle</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="s">&#39;Position&#39;</span><span class="p">,[</span><span class="mf">0.5</span><span class="o">+</span><span class="n">off</span> <span class="mf">0.5</span><span class="o">+</span><span class="n">off</span> <span class="n">yw</span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="n">off</span> <span class="n">yw</span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="n">off</span><span class="p">],</span> <span class="s">&#39;EdgeColor&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">rectangle</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="s">&#39;Position&#39;</span><span class="p">,[</span><span class="n">yw</span><span class="o">+</span><span class="n">off</span> <span class="mf">0.5</span><span class="o">+</span><span class="n">off</span> <span class="n">yw</span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="n">off</span> <span class="n">yw</span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="n">off</span><span class="p">],</span> <span class="s">&#39;EdgeColor&#39;</span><span class="p">,</span> <span class="n">gr</span><span class="p">,</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">Color</span> <span class="p">=</span> <span class="s">&#39;none&#39;</span><span class="p">;</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">XTick</span> <span class="p">=</span> <span class="p">[];</span><span class="c">%1:length(labels);</span>
+   <span class="c">% ax.XTickLabel = labels;</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">YTick</span> <span class="p">=</span> <span class="p">[];</span>
+   <span class="c">% ax.YTickLabel = flip(spec.labels); %must flip! stupid matlab!</span>
+    
+    <span class="n">px</span> <span class="p">=</span><span class="n">axes</span><span class="p">;</span> <span class="n">px</span><span class="p">.</span><span class="n">Color</span> <span class="p">=</span> <span class="s">&#39;none&#39;</span><span class="p">;</span> <span class="n">px</span><span class="p">.</span><span class="n">LineWidth</span><span class="p">=</span><span class="mf">0.1</span><span class="p">;</span> 
+    <span class="n">xlim</span><span class="p">([</span><span class="mf">0.5</span> <span class="n">xw</span><span class="p">]);</span>
+    <span class="n">ylim</span><span class="p">([</span><span class="mf">0.5</span> <span class="n">yw</span><span class="p">]);</span>
+    <span class="n">px</span><span class="p">.</span><span class="n">XTick</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">labels</span><span class="p">);</span>
+    <span class="n">px</span><span class="p">.</span><span class="n">XTickLabel</span> <span class="p">=</span> <span class="nb">repmat</span><span class="p">(</span><span class="n">spec</span><span class="p">.</span><span class="n">labels</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">pX</span><span class="p">.</span><span class="n">XTickLabelRotation</span><span class="p">=</span> <span class="mi">30</span><span class="p">;</span>
+    
+    <span class="n">px</span><span class="p">.</span><span class="n">YTick</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">spec</span><span class="p">.</span><span class="n">labels</span><span class="p">);</span>
+    <span class="n">px</span><span class="p">.</span><span class="n">YTickLabel</span> <span class="p">=</span> <span class="nb">flip</span><span class="p">(</span><span class="n">spec</span><span class="p">.</span><span class="n">labels</span><span class="p">);</span>
+
+    <span class="n">if</span> <span class="s">m==1</span> 
+        <span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="o">*</span><span class="mf">1.5</span><span class="p">;</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="o">*</span><span class="n">dy</span><span class="o">*</span><span class="mf">1.5</span><span class="p">;</span>
+
+        
+    <span class="n">else</span>
+        <span class="s">f.Position(3)</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="p">;</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">Position</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="o">*</span><span class="n">dy</span><span class="p">;</span>
+
+    
+    <span class="n">end</span>
+    <span class="s">te=text(xw+0.2,</span> <span class="s">yw-1,</span> <span class="s">&#39;RECOVERED&#39;,</span> <span class="s">&#39;Color&#39;,</span> <span class="s">gr,</span> <span class="s">&#39;Rotation&#39;,</span> <span class="s">270)</span><span class="p">;</span>
+    <span class="n">te</span><span class="p">=</span><span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">yw</span><span class="o">+</span><span class="mf">0.2</span><span class="p">,</span> <span class="s">&#39;ORIGINAL&#39;</span><span class="p">,</span> <span class="s">&#39;Color&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">);</span>
+    <span class="n">te</span><span class="p">=</span><span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">length</span><span class="p">(</span><span class="n">spec</span><span class="p">.</span><span class="n">labels</span><span class="p">)</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">yw</span><span class="o">+</span><span class="mf">0.2</span><span class="p">,</span> <span class="s">&#39;RECOVERED&#39;</span><span class="p">,</span> <span class="s">&#39;Color&#39;</span><span class="p">,</span> <span class="n">gr</span><span class="p">);</span>
+    
+    <span class="n">title</span><span class="p">(</span><span class="n">mstr</span><span class="p">{</span><span class="n">m</span><span class="p">});</span>
+    
+<span class="n">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/models_5_0.png" src="_images/models_5_0.png" />
+<img alt="_images/models_5_1.png" src="_images/models_5_1.png" />
+<img alt="_images/models_5_2.png" src="_images/models_5_2.png" />
+<img alt="_images/models_5_3.png" src="_images/models_5_3.png" />
+</div>
+</div>
 </div>
 </div>
 

@@ -245,6 +245,25 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#without-ta">
+   without TA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#with-ta">
+   with TA
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -254,6 +273,8 @@
                 
   <div class="section" id="order-effect">
 <h1>Order effect<a class="headerlink" href="#order-effect" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="without-ta">
+<h2>without TA<a class="headerlink" href="#without-ta" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">addpath</span><span class="p">(</span><span class="s">&#39;/data/drive/DPhil/THESIS/Cross_study_analyses/learning-repo/scripts&#39;</span><span class="p">)</span>
@@ -287,9 +308,7 @@
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw participants: 116
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Excluded for missing anxiety scores:
+Excluded for missing anxiety scores:
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    &#39;ss11&#39;
@@ -321,13 +340,11 @@
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ss8_bl7525 ... excluding for missing more than 50% of data
+   ss4_bl6040 ... excluding for missing more than 50% of data
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ss4_bl6040 ... excluding for missing more than 50% of data
-   m01_v1 ... excluding for missing more than 50% of data
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   m13_v1 ... excluding for missing more than 50% of data
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   m01_v1 ... excluding for missing more than 50% of data
+   m13_v1 ... excluding for missing more than 50% of data
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   f39_v1 ... excluding for missing more than 50% of data
@@ -528,6 +545,22 @@ ans =
 
 ==================================================
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="with-ta">
+<h2>with TA<a class="headerlink" href="#with-ta" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">GS</span><span class="p">,</span> <span class="n">Gkey</span><span class="p">,</span> <span class="n">S_p</span><span class="p">,</span> <span class="n">Skey_p</span><span class="p">,</span> <span class="n">mle</span><span class="p">]</span> <span class="p">=</span> <span class="n">pX_get_stats</span><span class="p">(</span><span class="n">dloc</span><span class="p">,</span> <span class="n">dloc</span><span class="p">.</span><span class="n">prob</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;order_str&#39;</span><span class="p">,</span> <span class="s">&#39;contingency&#39;</span><span class="p">,</span> <span class="s">&#39;phase_str&#39;</span><span class="p">,</span> <span class="s">&#39;ta&#39;</span><span class="p">,</span> <span class="s">&#39;id&#39;</span><span class="p">});</span>
+<span class="n">cf</span><span class="p">=</span> <span class="p">[];</span> 
+<span class="n">cf</span><span class="p">.</span><span class="n">bycat</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">cf</span><span class="p">.</span><span class="nb">cat</span> <span class="p">={</span><span class="s">&#39;contingency&#39;</span><span class="p">};</span>
+<span class="n">Skey_p</span><span class="p">.</span><span class="n">prob</span> <span class="p">=</span> <span class="n">S_p</span><span class="p">;</span>
+<span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="p">=</span> <span class="n">pX_report_stats</span><span class="p">(</span><span class="n">Skey_p</span><span class="p">,</span> <span class="s">&#39;prob&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;order_str&#39;</span><span class="p">,</span> <span class="s">&#39;ta&#39;</span><span class="p">,</span> <span class="s">&#39;contingency&#39;</span><span class="p">,</span> <span class="s">&#39;phase_str&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;id&#39;</span><span class="p">},</span> <span class="n">cf</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
