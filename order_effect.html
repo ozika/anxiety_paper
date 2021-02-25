@@ -342,15 +342,17 @@
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ss8_bl7525 ... excluding for missing more than 50% of data
-   ss4_bl6040 ... excluding for missing more than 50% of data
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   m01_v1 ... excluding for missing more than 50% of data
-   m13_v1 ... excluding for missing more than 50% of data
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ss4_bl6040 ... excluding for missing more than 50% of data
+   m01_v1 ... excluding for missing more than 50% of data
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   f39_v1 ... excluding for missing more than 50% of data
-   f38_v1 ... excluding for missing more than 50% of data
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   m13_v1 ... excluding for missing more than 50% of data
+   f39_v1 ... excluding for missing more than 50% of data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   f38_v1 ... excluding for missing more than 50% of data
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Participans after all exlc.: 34
@@ -360,6 +362,18 @@
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting data, make a coffee and grab a croissant...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Error using save</span>
+<span class=" -Color -Color-Red">Variable &#39;in&#39; not found.</span>
+
+<span class=" -Color -Color-Red">Error in pX_append_data (line 68)</span>
+<span class=" -Color -Color-Red">      save([data_folder data_type &#39;/Dataset&#39; subIDs{s} &#39;.mat&#39;], &#39;Data&#39;, &#39;in&#39;); </span>
+
+<span class=" -Color -Color-Red">Error in pX_build_dataset (line 28)</span>
+<span class=" -Color -Color-Red">        pX_append_data;</span>
+
+
 </pre></div>
 </div>
 </div>
@@ -399,7 +413,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/order_effect_2_0.png" src="_images/order_effect_2_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Undefined function or variable &#39;data&#39;.</span>
+
+
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -413,139 +431,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=====MAIN MODEL=====
-
-mm = 
-
-
-Linear mixed-effects model fit by ML
-
-Model information:
-    Number of observations             222
-    Fixed effects coefficients          18
-    Random effects coefficients         37
-    Covariance parameters                2
-
-Formula:
-    Linear Mixed Formula with 4 predictors.
-
-Model fit statistics:
-    AIC        BIC        LogLikelihood    Deviance
-    -184.32    -116.27    112.16           -224.32 
-
-Fixed effects coefficients (95% CIs):
-    Name                                                      Estimate 
-    &#39;(Intercept)&#39;                                               0.55616
-    &#39;order_str_second&#39;                                         0.043992
-    &#39;order_str_first&#39;                                           0.10849
-    &#39;contingency_75/25&#39;                                        0.091128
-    &#39;contingency_90/10&#39;                                         0.14183
-    &#39;phase_str_ext&#39;                                           -0.090868
-    &#39;order_str_second:contingency_75/25&#39;                      -0.022195
-    &#39;order_str_first:contingency_75/25&#39;                       -0.095866
-    &#39;order_str_second:contingency_90/10&#39;                      -0.021126
-    &#39;order_str_first:contingency_90/10&#39;                         -0.1107
-    &#39;order_str_second:phase_str_ext&#39;                          0.0083084
-    &#39;order_str_first:phase_str_ext&#39;                           -0.070492
-    &#39;contingency_75/25:phase_str_ext&#39;                         -0.064463
-    &#39;contingency_90/10:phase_str_ext&#39;                          -0.16932
-    &#39;order_str_second:contingency_75/25:phase_str_ext&#39;        -0.024934
-    &#39;order_str_first:contingency_75/25:phase_str_ext&#39;           0.11392
-    &#39;order_str_second:contingency_90/10:phase_str_ext&#39;          0.10048
-    &#39;order_str_first:contingency_90/10:phase_str_ext&#39;           0.07272
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Error using eval</span>
+<span class=" -Color -Color-Red">Undefined function or variable &#39;S_p&#39;.</span>
 
 
-    SE          tStat       DF     pValue        Lower        Upper    
-    0.041388      13.438    204    6.6506e-30      0.47456      0.63777
-     0.05404     0.81407    204       0.41655    -0.062556      0.15054
-    0.061394      1.7672    204      0.078691    -0.012553      0.22954
-    0.058167      1.5667    204       0.11875    -0.023558      0.20581
-     0.05585      2.5395    204      0.011847     0.031712      0.25195
-    0.050657     -1.7938    204      0.074325     -0.19075    0.0090094
-    0.084039     -0.2641    204       0.79197     -0.18789       0.1435
-    0.086741     -1.1052    204       0.27037     -0.26689     0.075157
-    0.084342    -0.25049    204       0.80246     -0.18742      0.14517
-    0.085726     -1.2913    204       0.19805     -0.27972     0.058321
-     0.06921     0.12005    204       0.90456     -0.12815      0.14477
-      0.0792    -0.89005    204       0.37449     -0.22665     0.085664
-    0.074825    -0.86152    204       0.38996     -0.21199     0.083066
-    0.071639     -2.3635    204      0.019044     -0.31057     -0.02807
-     0.10297    -0.24215    204       0.80891     -0.22795      0.17809
-     0.10811      1.0537    204       0.29326    -0.099241      0.32708
-      0.1034     0.97172    204       0.33234      -0.1034      0.30435
-     0.10593     0.68648    204       0.49319     -0.13614      0.28158
-
-Random effects covariance parameters (95% CIs):
-Group: id (37 Levels)
-    Name1                Name2                Type         Estimate    Lower   
-    &#39;(Intercept)&#39;        &#39;(Intercept)&#39;        &#39;std&#39;        0.09658     0.071189
-
-
-    Upper  
-    0.13103
-
-Group: Error
-    Name             Estimate    Lower      Upper  
-    &#39;Res Std&#39;        0.12915     0.11658    0.14307
-
-
-ans = 
-
-
-    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
-
-    Term                                     FStat      DF1    DF2    pValue    
-    &#39;(Intercept)&#39;                             180.57    1      204    6.6506e-30
-    &#39;order_str&#39;                               1.5616    2      204       0.21229
-    &#39;contingency&#39;                             3.3027    2      204       0.03876
-    &#39;phase_str&#39;                               3.2177    1      204      0.074325
-    &#39;order_str:contingency&#39;                  0.52263    4      204        0.7192
-    &#39;order_str:phase_str&#39;                    0.58055    2      204       0.56051
-    &#39;contingency:phase_str&#39;                   2.8403    2      204      0.060722
-    &#39;order_str:contingency:phase_str&#39;        0.92162    4      204        0.4523
-
-=====POST-HOC: contingency:60/40=====
-
-ans = 
-
-
-    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
-
-    Term                         FStat     DF1    DF2    pValue    
-    &#39;(Intercept)&#39;                181.81    1      68     6.8726e-21
-    &#39;order_str&#39;                  3.3366    2      68       0.041465
-    &#39;phase_str&#39;                  5.0172    1      68        0.02837
-    &#39;order_str:phase_str&#39;        0.9052    2      68        0.40928
-
-==================================================
-=====POST-HOC: contingency:75/25=====
-
-ans = 
-
-
-    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
-
-    Term                         FStat      DF1    DF2    pValue    
-    &#39;(Intercept)&#39;                 197.02    1      68     9.1189e-22
-    &#39;order_str&#39;                  0.19989    2      68         0.8193
-    &#39;phase_str&#39;                   15.786    1      68     0.00017399
-    &#39;order_str:phase_str&#39;        0.56075    2      68         0.5734
-
-==================================================
-=====POST-HOC: contingency:90/10=====
-
-ans = 
-
-
-    ANOVA MARGINAL TESTS: DFMETHOD = &#39;RESIDUAL&#39;
-
-    Term                         FStat      DF1    DF2    pValue    
-    &#39;(Intercept)&#39;                 237.83    1      68     6.8499e-24
-    &#39;order_str&#39;                  0.53759    2      68        0.58661
-    &#39;phase_str&#39;                   20.964    1      68     2.0496e-05
-    &#39;order_str:phase_str&#39;        0.95155    2      68        0.39122
-
-==================================================
 </pre></div>
 </div>
 </div>
@@ -561,6 +450,14 @@ ans =
 <span class="n">cf</span><span class="p">.</span><span class="nb">cat</span> <span class="p">={</span><span class="s">&#39;contingency&#39;</span><span class="p">};</span>
 <span class="n">Skey_p</span><span class="p">.</span><span class="n">prob</span> <span class="p">=</span> <span class="n">S_p</span><span class="p">;</span>
 <span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="p">=</span> <span class="n">pX_report_stats</span><span class="p">(</span><span class="n">Skey_p</span><span class="p">,</span> <span class="s">&#39;prob&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;order_str&#39;</span><span class="p">,</span> <span class="s">&#39;ta&#39;</span><span class="p">,</span> <span class="s">&#39;contingency&#39;</span><span class="p">,</span> <span class="s">&#39;phase_str&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;id&#39;</span><span class="p">},</span> <span class="n">cf</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Error using eval</span>
+<span class=" -Color -Color-Red">Undefined function or variable &#39;dloc&#39;.</span>
+
+
 </pre></div>
 </div>
 </div>
